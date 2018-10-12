@@ -1,0 +1,13 @@
+a.plain-link {
+
+    &:link,
+    &:visited {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &:focus,
+    &:hover {
+        color: palette(branding, green);
+    }
+}

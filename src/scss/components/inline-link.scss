@@ -1,0 +1,14 @@
+a.inline-link {
+    display: inline-block;
+    &:link,
+    &:visited {
+        color: inherit;
+        font-weight: 700;
+        border-bottom: 1px solid palette(branding, green);
+    }
+
+    &:focus,
+    &:hover {
+        color: palette(branding, green);
+    }
+}

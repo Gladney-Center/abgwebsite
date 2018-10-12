@@ -1,0 +1,110 @@
+/* section */.share-your-story {
+    text-align: center;
+    padding-top: 3rem;
+    background-color: palette(ui, grey);
+    position: relative;
+
+    @include mq(xl) {
+        text-align: left;
+    }
+
+
+    .l-container {
+        @include mq($until: xl) {
+            max-width: 30em;
+        }
+    }
+
+
+    &__title {
+        @include grid-column(17, $grid--17);
+        margin-bottom: 2rem;
+        font-family: $font1;
+        font-size: rem(16px);
+        line-height: 2.125;
+        font-weight: 700;
+        @include tracking(50);
+        text-transform: uppercase;
+        color: palette(branding, salmon);
+        @include no-smoothing();
+        @include swash();
+
+        @include mq(xl) {
+            @include grid-column(4, $grid--17);
+        }
+
+        strong {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: $font3;
+            font-style: italic;
+            font-size: rem(69px);
+            line-height: 1.09;
+            text-transform: none;
+            font-weight: 600;
+            color: palette(branding, navy);
+        }
+    }
+
+
+    &__intro {
+        @include grid-column(17, $grid--17);
+        margin-bottom: 2rem;
+        font-size: rem(16px);
+        line-height: 1.8125;
+
+        @include mq(xl) {
+            @include grid-column(4, $grid--17);
+        }
+    }
+
+
+    &__list {
+        @include grid-column(17, $grid--17);
+        margin-bottom: 3rem;
+        font-size: rem(16px);
+        line-height: 1.8125;
+
+        @include mq(xl) {
+            @include grid-column(4, $grid--17);
+            @include grid-push(1, $grid--17);
+        }
+
+        li::before {
+            color: palette(branding, green);
+        }
+    }
+
+
+    &__disclaimer {
+        @include grid-column(17, $grid--17);
+        margin-bottom: 2rem;
+        font-size: rem(12px);
+        line-height: 1.667;
+
+        @include mq(xl) {
+            @include grid-column(4, $grid--17);
+        }
+
+        strong {
+            display: block;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+    }
+
+
+    &__cta {
+        display: block;
+        padding: 0.5em 0;
+        background-color: palette(branding, green--l);
+        font-size: rem(20px);
+        line-height: 1.7;
+        color: palette(base, font);
+
+        &:focus,
+        &:hover {
+            background-color: palette(branding, salmon);
+        }
+    }
+}

@@ -1,0 +1,193 @@
+/* header */.banner {
+    align-items: center;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3rem;
+    min-height: 50vw;
+    padding: 3rem 1rem;
+    text-align: center;
+
+    @include mq(m) {
+        margin-bottom: 4.3333rem;
+    }
+    @include mq( 800px ) {
+        min-height: 24vw;
+    }
+
+    .subnav + & {
+
+        @media screen and ( min-width: 1180px ) {
+            margin-top: 50px;
+        }
+    }
+
+    &__heading,
+    &__subheading {
+        width: 100%;
+        // max-width: $max-width--9;
+        // padding-left: 1rem;
+        // padding-right: 1rem;
+        color: #fff;
+        text-shadow: 0 0 18px rgba(0,0,0, 0.8);
+        -webkit-font-smoothing: antialised;
+    }
+
+
+    &__heading {
+        line-height: 1;
+        margin-bottom: 0;
+        font-family: $font3;
+        font-weight: 600;
+        font-style: italic;
+        font-size: rem(60px);
+        @include swash();
+
+        @include mq(m) {
+            font-size: rem(80px);
+        }
+
+        > span {
+            font-size: 0.3em;
+            font-family: $font1;
+            font-style: normal;
+            text-transform: uppercase;
+            @include tracking(400);
+            font-weight: 500;
+        }
+
+        &--s {
+            font-size: rem(28px);
+            text-shadow: none;
+        }
+    }
+
+
+    &__subheading {
+        margin-top: 0.2em;
+        font-family: $font1;
+        font-size: rem(16px);
+        text-transform: uppercase;
+        font-weight: 500;
+        @include tracking(100);
+    }
+
+
+    /* Variants */
+    &--plain {
+        @include no-smoothing();
+        background: palette(branding, navy);
+        min-height: 17vw;
+        padding-bottom: 3rem;
+        padding-top: 3rem;
+
+        .banner__heading {
+            font-weight: 400;
+            line-height: 1.4;
+            max-width: 26em;
+
+            em {
+                color: palette(branding, green)
+            }
+        }
+    }
+
+
+    &--tall {
+
+        @include mq( 740px ) {
+            min-height: 35vw;
+            padding-bottom: 14vw;
+        }
+    }
+
+
+    &--text-bottom {
+
+        @include mq( 740px ) {
+            justify-content: flex-end;
+            min-height: 42vw;
+            padding-bottom: 14vw;
+
+            &.short {
+                justify-content: flex-end;
+                min-height: 36vw;
+                padding-bottom: 5vw;
+            }
+        }
+
+        .banner__heading {
+
+            @include mq(m) {
+                font-size: rem(60px);
+            }
+        }
+    }
+
+    &--with-cta {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        min-height: 60vh;
+        justify-content: center;
+        margin: 0;
+        padding: 3rem 1rem;
+
+        .cta {
+            color: palette(branding, pri);
+            font-size: 2rem;
+            letter-spacing: 0.01em;
+            line-height: 1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+
+            @include mq( 500px ) {
+                font-size: 2.3rem;
+            }
+
+            .wf-nimbussanscondensed-n7-active & {
+                font-family: $font2;
+                font-size: 3rem;
+
+                @include mq( 500px ) {
+                    font-size: 4rem;
+                }
+            }
+
+            em {
+                color: #FFF;
+                font-style: normal;
+            }
+        }
+
+        .button.button--xl {
+
+            @include mq( $until: 479px ) {
+                padding-left: 1.5em;
+                padding-right: 1.5em;
+            }
+            @include mq( 480px ) {
+
+                .wf-nimbussanscondensed-n7-active & {
+                    font-size: 1.8888rem;
+                }
+            }
+
+            &:hover {
+                border-color: #FFF;
+                color: #FFF;
+            }
+        }
+    }
+
+    &.contact {
+        min-height: 66vh;
+    }
+}
+
+
+

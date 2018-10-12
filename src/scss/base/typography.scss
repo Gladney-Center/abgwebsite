@@ -1,0 +1,176 @@
+::selection {
+	background:lighten(palette(branding,pri),30);
+	color:#444;
+	text-shadow:none;
+}
+
+html {
+	background-color:palette(base,body);
+	box-sizing:border-box;
+	min-height:100%;
+	font-size: 16px;
+
+    @include mq( 480px ) {
+        font-size: 18px;
+    }
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	color:palette(base,font);
+	font-family:$base-font-family;
+	font-feature-settings:"kern", "liga", "pnum";
+	line-height:$base-line-height;
+	min-height:100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family:$heading-font-family;
+	font-size:$base-font-size * 1.2;
+	line-height:$heading-line-height;
+	margin:0 0 1em;
+}
+
+h2,
+.beta {
+	font-family: $font3;
+	font-style: italic;
+	font-weight: 400;
+	color: palette(branding, navy);
+	font-size: rem(30px);
+	line-height: 1.33;
+}
+
+ul + h2 {
+	margin-top: 3rem;
+}
+
+h5,
+.epsilon {
+	font-family: $font1;
+	color: palette(branding, salmon);
+	font-size: rem(16px);
+	@include tracking(200);
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+
+/**
+Special headings used infrequently
+*/
+.heading-a {
+	font-family: $font1;
+	font-size: rem(28px);
+	line-height: 1;
+	@include tracking(50);
+	font-weight: 500;
+	color: palette(base, font--d);
+	text-transform: uppercase;
+	font-style: normal;
+}
+
+
+p {
+	margin:0 0 1em;
+}
+
+a {
+	color:palette(branding,pri);
+	text-decoration:none;
+	transition: color 200ms ease;
+
+	&:active,
+	&:focus,
+	&:hover {
+		color:darken(palette(branding,pri), 25);
+	}
+}
+
+hr {
+	border-bottom:1px solid palette(branding,pri);
+	border-left:0;
+	border-right:0;
+	border-top:0;
+	margin:1em 0;
+}
+
+
+abbr,
+acronym {
+	border-bottom:1px dotted #ddd;
+	cursor:help;
+}
+
+address {
+}
+
+hgroup {
+}
+
+del {
+}
+
+blockquote {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 0;
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0.3em;
+        line-height: 1.3;
+        font-size: 1.5em;
+        font-family: $font3;
+        font-style: italic;
+        font-weight: 400;
+        color: palette(branding, green);
+        @include swash();
+
+        &:first-of-type::before {
+            content: "“";
+            position: relative;
+            left: -0.1em;
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+
+            &::after {
+                content: "”";
+            }
+        }
+    }
+
+    cite {
+        display: block;
+        margin-top: 1em;
+        font-family: $font1;
+        color: palette(branding, navy);
+        font-size: rem(14px);
+        @include tracking(40);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-style: normal;
+
+        &::before {
+            content: "–";
+        }
+    }
+}
+
+cite {
+}
+
+sup {
+    font-size: 120%;
+    top: auto;
+}

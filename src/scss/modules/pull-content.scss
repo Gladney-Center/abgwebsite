@@ -1,0 +1,47 @@
+.pull-content {
+    @include mq(500px) {
+        display: block;
+        max-width: 50%;
+        margin-top: 2rem;
+        margin-bottom: 1em;
+    }
+
+
+    &--left {
+        @include mq(500px) {
+            float: left;
+            margin-right: 1.5em;
+        }
+
+        @include mq(l) {
+            max-width: none;
+            width: 8*$col-width-pc;
+            margin-left: -2*$col-width-pc;
+        }
+
+        @include mq(xl) {
+            width: 10*$col-width-pc;
+            margin-left: -4*$col-width-pc;
+        }
+    }
+
+
+    &--right {
+        @include mq(500px) {
+            float: right;
+            margin-left: 1.5em;
+        }
+
+        @include mq(l) {
+            max-width: none;
+            width: 8*$col-width-pc;
+            margin-right: -2*$col-width-pc;
+        }
+
+        @include mq(xl) {
+            width: 10*$col-width-pc;
+            margin-right: -4*$col-width-pc;
+        }
+    }
+
+}

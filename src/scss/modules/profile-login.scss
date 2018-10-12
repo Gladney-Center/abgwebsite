@@ -1,0 +1,81 @@
+/* section */.profile-login {
+    padding: 1.5rem;
+    background-color: palette(branding, salmon);
+    text-align: center;
+    color: palette(branding, salmon--xd);
+    -webkit-font-smoothing: antialiased;
+    font-size: rem(16px);
+
+    @include mq($until: l) {
+        padding: 1rem 0.5rem 0.25rem 0.5rem;
+    }
+
+
+    &__title {
+        @include mq($until: l) {
+            display: none;
+        }
+
+        display: block;
+        font-weight: 500;
+        text-transform: uppercase;
+        @include tracking(50);
+    }
+
+
+    form {
+        margin-top: 1rem;
+
+        @include mq($until: l) {
+            display: none;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 0.25em;
+        }
+
+        #{$all-text-inputs} {
+            border-color: palette(branding, salmon--d);
+        }
+
+        .button {
+            background-color: palette(branding, salmon--d);
+        }
+    }
+
+
+    &__extra {
+        margin-bottom: 0;
+        line-height: 1.5;
+
+        @include mq($until: l) {
+            display: none;
+        }
+
+        a {
+            display: inline-block;
+            &:link,
+            &:visited {
+                color: palette(branding, salmon--xd);
+                font-weight: 700;
+                border-bottom: 1px solid;
+            }
+        }
+    }
+
+
+    &__small {
+        display: block;
+        margin-bottom: 0;
+
+        @include mq(l) {
+            display: none;
+        }
+    }
+}

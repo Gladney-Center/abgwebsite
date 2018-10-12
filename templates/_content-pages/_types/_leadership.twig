@@ -1,0 +1,40 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% set category = craft.categories.group('staff').slug('leadership').first() %}
+{% set leaders = craft.entries.section('staff').relatedTo(category).find() %}
+
+{% set thumb = {
+    width: 220,
+    height: 220,
+    mode: 'crop',
+    position: 'top-center',
+} %}
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    <header class="banner banner--plain">
+        <h1 class="u-sr-only">{{ entry.title }}</h1>
+        <h2 class="banner__heading banner__heading--s">{{ entry.textArea | widont | raw }}</h2>
+    </header>
+
+    <section class="l-container l-container--11">
+        <ul class="team-profiles">
+
+            {% for leader in leaders %}
+            <li>
+                <img class="team-profiles__photo" src="{{ leader.image.first().getUrl( thumb ) }}" alt="{{ leader.title }} Headshot">
+                <h2 class="team-profiles__header">
+                    <strong>{{ leader.firstName }} {{ leader.lastName }},</strong>
+                    <em>{{ leader.position }}{%if leader.department is not empty %}, {{ leader.department }}{% endif %}{%if leader.label is not empty %}, {{ leader.label }}{% endif %}</em>
+                </h2>
+                {{ leader.body | widont }}
+            </li>
+            {% endfor %}
+
+        </ul>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+.meet-our-team {
+    padding-top: 4rem;
+
+    h2 {
+        @include swash();
+        color: palette(branding, pri);
+        font-size: 2.3333rem;
+        text-align: center;
+    }
+}

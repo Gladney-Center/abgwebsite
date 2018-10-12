@@ -1,0 +1,33 @@
+{% if icons|length == 0 %}
+{% set icons = [
+  {
+    icon: 'phone',
+  }, {
+    icon: 'email',
+  }, {
+    icon: 'chat',
+  }, {
+    icon: 'gavel',
+  }, {
+    icon: 'facebook',
+  }, {
+    icon: 'twitter',
+  },
+] %}
+{% endif %}
+
+<div class="icon-grid">
+  {% for item in icons %}
+    {% if item.linkit is defined %}
+      <a href="{{ item.linkit.url }}" target="{{ item.linkit.target }}">
+    {% else %}
+      <span>
+    {% endif %}
+    {{ svgSprite.icon('icongrid-' ~ item.icon) }}
+    {% if item.linkit is defined %}
+      </a>
+    {% else %}
+      </span>
+    {% endif %}
+  {% endfor %}
+</div>

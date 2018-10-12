@@ -1,0 +1,16 @@
+body.has-grid-overlay::after {
+    content:"";
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    max-width: $max-width--17;
+    transform: translateX(-50%);
+    background-image: repeating-linear-gradient(to right, transparent,
+        transparent 20px,
+        rgba(red, 0.2) $gutter,
+        rgba(red, 0.2) calc(4.3% + 20px));
+    z-index: 9999;
+}

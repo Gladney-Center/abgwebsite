@@ -1,0 +1,96 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+<div class="subnav">
+    <div class="l-container">
+        <strong class="subnav__label">Section</strong>
+        <nav>
+            <ul class="subnav__nav">
+                <li><a href="">Item</a></li>
+                <li><a class="is-active" href="">Item</a></li>
+                <li><a href="">Item</a></li>
+                <li><a href="">Item</a></li>
+                <li><a href="">Item</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+
+
+<header class="banner u-flush--bottom" style="background-image: url('/static/img/temp/banner-2.jpg')">
+    <h1 class="banner__heading">Visiting Gladney</h1>
+</header>
+
+
+<div class="l-container">
+    <section class="location-map u-push--bottom--4">
+        <div class="location-map__map" id="gladneyLocation"></div>
+        <div class="location-map__location">
+            <h3 class="location-map__title">Gladney Center for Adoption</h3>
+            <p>
+                6300 John Ryan Drive<br>
+                Fort Worth, Texas 76132-4122<br>
+                <a href="tel:8179226000">817-922-6000</a>
+            </p>
+            <p><a href="https://www.google.com/maps/dir/?api=1&destination=Gladney+Center+For+Adoption+Fort+Worth+TX%destination_place_id=ChIJLxDsrThtToYRLwwMkdrFlVQ" class="button button--rnd" title="Get directions">Get Directions</a></p>
+        </div>
+    </section>
+
+
+    <h2 class="underline-title">Travel Information</h2>
+    <p class="lede">The Gladney Center for Adoption has made discount arrangements with several local hotels and car rental agencies for our clients. Although we've included each hotel's web address where available, in many instances you must make your reservation by telephone to receive the appropriate discount unless otherwise noted.</p>
+
+    <h3>Airlines</h3>
+    <p>When booking flights with American Airlines, American Eagle® or AmericanConnection® service you can help Gladney earn Business ExtrAA Points. Unlike some programs, the Business ExtrAA program provides full credit for all published fares, and you still earn your AAdvantage® miles, too. Just put in Gladney's Business Extra number 523450 when you book your flights. Thanks for helping!</p>
+
+    <h3>Hotels in Fort Worth</h3>
+    <p>Mention the Gladney Center for Adoption when making reservations. Please note that none of the following hotels are within walking distance of Gladney. *Indicates location is close to the Gladney Center of Adoption.</p>
+
+    <ul class="l-matrix l-matrix--3">
+        {% for i in 0..23 %}
+        <li>
+            <h4>Embassy Suites Fort Worth – Downtown</h4>
+            <p>
+                600 Commerce St, 76102<br>
+                Extended stay rates available upon request!<br>
+                <a href="">Website {{ svgSprite.icon('new-window', '') }}</a>
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Other Hotel Partnerships</h3>
+    <p>No matter where you travel, there are hotels that partner with Gladney to give you their best rate.</p>
+
+    <ul class="l-matrix l-matrix--3">
+        {% for i in 0..7 %}
+        <li>
+            <h4>Embassy Suites Fort Worth – Downtown</h4>
+            <p>
+                600 Commerce St, 76102<br>
+                Extended stay rates available upon request!<br>
+                <a href="">Website {{ svgSprite.icon('new-window', '') }}</a>
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Car Rental Agencies</h3>
+    <ul class="l-matrix l-matrix--4">
+        {% for i in 0..3 %}
+        <li>
+            <p>
+                AVIS Rent a Car<br>
+                1-800-331-1212<br>
+                AWD # Q171369<br>
+                <a href="">Enrol for Avis® Preferred®  Service {{ svgSprite.icon('new-window', '') }}</a>
+                <a href="">Website {{ svgSprite.icon('new-window', '') }}</a>
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

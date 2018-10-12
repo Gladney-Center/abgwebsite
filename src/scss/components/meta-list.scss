@@ -1,0 +1,79 @@
+/* dl */.meta-list {
+    @include clearfix();
+    margin-top: 0;
+    margin-bottom: 1.5em;
+
+    &,
+    dl,
+    dt {
+        line-height: rem(30px);
+    }
+
+
+    dt {
+        clear: both;
+        float: left;
+        position: relative;
+        top: 0.16em;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right: 0.5em;
+        font-family: $font3;
+        font-style: italic;
+        font-size: rem(18px);
+        font-weight: 700;
+        color: palette(branding, navy);
+    }
+
+
+    dd {
+        float: left;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+
+    dd,
+    dt em {
+        font-family: $font1;
+        font-size: rem(15px);
+        font-weight: 500;
+        color: palette(base, font--l);
+        @include tracking(50);
+        font-style: normal;
+    }
+
+
+    dt.indent {
+        margin-left: 1em;
+    }
+
+
+    /* Inline horizontal version */
+    &--inline {
+        dt,
+        dd {
+            display: inline-block;
+            float: none;
+            clear: none;
+        }
+
+        dt {
+            display: inline-block;
+            top: 0;
+            margin-right: 0.15em;
+        }
+
+
+        dd {
+            display: inline-block;
+
+            &:not(:last-of-type)::after {
+                display: inline-block;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+                content: "|"
+            }
+        }
+    }
+}

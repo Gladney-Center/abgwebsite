@@ -1,0 +1,13 @@
+<div class="body-inset">
+  <div class="body-inset__content">
+      <header class="body-inset__heading">
+          <h3>{{ heading }}</h3>
+          <h4>{{ subheading }}</h4>
+      </header>
+      {{ body|raw }}
+      <div class="body-inset__footer">
+        <p>{{ footer }}</p>
+        {{ cta.htmlLink({ class: "button" }) }}
+      </div>
+  </div>
+</div>

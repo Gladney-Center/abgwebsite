@@ -1,0 +1,25 @@
+$mq-show-breakpoints: (s, m, l, xl);
+
+$mq-breakpoints: (
+	s:		  320px,
+	m:		  740px,
+	l:		  980px,
+	xl:		  1340px,
+	xxl:      1500px,
+	site-nav: 1180px,
+);
+
+// MQ debug styles
+body:before {
+	background:#000!important;
+	border:none!important;
+	bottom:0!important;
+	color:#fff!important;
+	display:none!important;
+	opacity:.5;
+	top:auto!important;
+}
+
+html[data-craftenv="local"] body:before {
+	display:block!important;
+}

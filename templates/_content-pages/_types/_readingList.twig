@@ -1,0 +1,41 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <div class="banner"></div>
+
+    <article class="page banner-overlap">
+
+        <header class="l-container l-container--9 wysiwyg">
+            <h1 class="u-sr-only">{{ entry.title }}</h1>
+            <h2 class="underline-title">{{ heading | widont }}</h2>
+        </header>
+
+        <div class="l-container l-container--9">
+            {{ entry.body }}
+        </div>
+
+        <ul class="reading-list l-container l-container--11">
+            {% for book in entry.readingList %}
+            <li class="book">
+                <div class="img">{{ book.bookLink | raw }}</div>
+                <div class="label">{{ book.bookTitle | widont }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </article>
+
+{% endblock %}

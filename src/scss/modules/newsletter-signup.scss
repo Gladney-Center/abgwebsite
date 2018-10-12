@@ -1,0 +1,85 @@
+.newsletter-signup {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+    background-color: palette(branding, navy);
+    background-image: url('/static/img/newsletter-signup-bg.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    h5 {
+        margin-bottom: 1.5rem;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -0.5rem;
+    }
+
+    .field-group {
+        flex: 1 1 100%;
+        padding: 0 0.5rem;
+
+        @include mq( 600px ) {
+            flex-basis: 50%;
+        }
+        @include mq( 992px ) {
+            flex-basis: 25%;
+        }
+    }
+
+    .field {
+        position: relative;
+
+        &.error::after {
+            @include size( 1.5rem );
+            align-items: center;
+            background-color: #F00;
+            border-radius: 50%;
+            color: #FFF;
+            content: '!';
+            display: flex;
+            font-weight: 900;
+            justify-content: center;
+            line-height: 1;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translate(10px, -10px);
+        }
+    }
+
+    input {
+        margin-bottom: 0.75rem;
+        border: 0;
+        width: 100%;
+
+        &:focus,
+        &:hover {
+            box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.3);
+        }
+    }
+
+    .button {
+        display: block;
+        line-height: 1.75;
+        padding: 0.6rem;
+        width: 100%;
+    }
+
+    .signup-success {
+        color: #FFF;
+        font-family: $font3;
+        font-size: 1.5rem;
+        font-style: italic;
+        line-height: 1;
+        margin-bottom: 0;
+        margin-top: 1rem;
+        text-align: center;
+        text-shadow: 1px 1px 2px #000;
+    }
+}

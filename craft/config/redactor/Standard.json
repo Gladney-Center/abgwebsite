@@ -1,0 +1,11 @@
+{
+	"buttons": ["format","bold","italic","lists","link","file"],
+	"plugins": ["source"],
+	"toolbarFixed": true,
+    "formattingAdd": {
+        "lede": {
+            "title": "Lede Paragraph",
+            "args": ["p", "class", "lede"]
+        }
+    }
+}

@@ -1,0 +1,43 @@
+/* section */.i-am-gladney-small {
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    text-align: center;
+
+    @include mq(700px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+
+    img.i-am-gladney-small__graphic {
+        display: block;
+        flex: 0 0 auto;
+        width: 185px;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto 1rem auto;
+
+        @include mq(700px) {
+            margin-left: 0;
+            margin-right: 2rem;
+        }
+
+        img {
+        }
+    }
+
+
+    &__text {
+        flex: 1 1 auto;
+        line-height: 1.8;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include mq(700px) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}

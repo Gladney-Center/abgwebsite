@@ -1,0 +1,70 @@
+.board-members {
+    padding-bottom: 5rem;
+
+    &__title {
+        margin-bottom: 2rem;
+        font-family: $font1;
+        font-size: rem(18px);
+        font-weight: 700;
+        @include tracking(200);
+        text-transform: uppercase;
+        font-style: normal;
+    }
+
+    ul {
+        margin-bottom: 0;
+
+        li {
+            font-size: 18px;
+            line-height: 1.25;
+            margin-bottom: 0.75em;
+
+            @include mq( 600px ) {
+                font-size: rem(24px);
+            }
+        }
+
+        em {
+            font-size: 20px;
+            font-family: $font3;
+            font-style: italic;
+            color: palette(branding, green);
+
+            @include mq( 600px ) {
+                font-size: rem(27px);
+            }
+        }
+    }
+
+
+    &__officers {
+        @include grid-column(15);
+        margin-bottom: 2rem;
+
+        @include mq(l) {
+            @include grid-column(6);
+        }
+    }
+
+
+    &__members {
+        @include grid-column(15);
+
+        @include mq(480px) {
+
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                padding-right: 1rem;
+
+                li {
+                    flex: 1 1 50%;
+                }
+            }
+        }
+
+        @include mq(l) {
+            @include grid-column(9);
+        }
+    }
+}

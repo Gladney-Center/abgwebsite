@@ -1,0 +1,33 @@
+{% set questions = craft.entries.section('wizard').first().wizardQuestions %}
+{% set len = questions | length %}
+
+<div id="wizard" class="wizard mfp-hide">
+
+    {% for question in questions %}
+    <div id="q{{ loop.index }}" class="question">
+        <div class="status">
+            <span class="index">{{ loop.index }}</span> of <span class="total">{{ len }}</span>
+        </div>
+        <p>{{ question.questionText | widont }}</p>
+        <div class="option-buttons">
+            {% set next %}#q{{ loop.index + 1 }}{% endset %}
+            {% if loop.last %}
+                {% set next = '#answer' %}
+            {% endif %}
+
+
+            {% for button in question.buttons %}
+            <a href="{{ next }}" class="btn-answer button button--outline" data-weight-domestic="{{ button.domesticWeight }}" data-weight-international="{{ button.internationalWeight }}" data-weight-foster="{{ button.fosterWeight }}">{{ button.buttonLabel }}</a>
+            {% endfor %}
+
+        </div>
+    </div>
+    {% endfor %}
+
+    <div id="answer" class="answer">
+        <p>Based on your answers, we&nbsp;would like to tell you more&nbsp;about <em class="type-title">Domestic Adoption</em></p>
+        <a href="/i-want-to-adopt/domestic-infant" class="button button--outline">Take Me There</a>
+        <a href="#" class="btn-start-over scroll">Let me change my answers &raquo;</a>
+    </div>
+
+</div>

@@ -1,0 +1,82 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+<header class="banner" style="background-image: url('/static/img/temp/banner-4.jpg')">
+    <h1 class="banner__heading">Superkids</h1>
+</header>
+
+
+
+
+<section class="l-container l-container--17">
+    <div class="l-grid l-left-sidebar">
+        <div class="left">
+            <aside class="superkids">
+                <header class="superkids__header">
+                    <img src="/static/img/superkids-logo.png" alt="Superkids logo" class="superkids__logo">
+                    <h3 class="superkids__title">Latest blog posts</h3>
+                </header>
+
+
+                <ul class="superkids__posts">
+                    <li>
+                        <img src="/static/img/temp/superkids-1.jpg" alt="Family Friday" class="superkids__image">
+                        <div class="superkids__extract">
+                            <h3>Family Friday</h3>
+                            <p>It's Friday and we have matches to announce! {Insert happy Friday dance!} Hugh Loyal Eddie Larson We are over the moon excited for each of these...</p>
+                            <a href="">Read More</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <img src="/static/img/temp/superkids-2.jpg" alt="Ethan!" class="superkids__image">
+                        <div class="superkids__extract">
+                            <h3>Ethan!</h3>
+                            <p>We are still looking for Ethan's family! You can read more about him here. Please help us out and share this post. We have an amazing community of people... who read</p>
+                            <a href="">Read More</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <img src="/static/img/temp/superkids-3.jpg" alt="Iris Video!" class="superkids__image">
+                        <div class="superkids__extract">
+                            <h3>Iris Video!</h3>
+                            <p>This is Iris. You can read more about her here. Here is a little video that is easy to share. Let's see how many times her video gets viewed today!...</p>
+                            <a href="">Read More</a>
+                        </div>
+                    </li>
+                </ul>
+
+
+                <nav class="superkids__links">
+                    <a href="" class="superkids__facebook">Facebook {{ svgSprite.icon('facebook-square', '') }}</a>
+                    <a href="http://superkidscharity.blogspot.com/" target="_BLANK" class="superkids__blog">Visit all {{ svgSprite.icon('new-window', '') }}</a>
+                    <a href="" class="superkids__donate">Donate to Superkids</a>
+                </nav>
+            </aside>
+        </div>
+
+
+        <div class="right">
+            <p class="lede"><em>In 2007</em>, Gladney joined forces with Superkids, a program which sent medical and therapy volunteers to visit children with special needs in orphanages in China.</p>
+            <p>STANDARD CONTENT</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ducimus deleniti neque aspernatur illo sed dignissimos dolores? Sequi harum non omnis amet ea minima? Magni fugiat, sint amet, vitae laudantium voluptatibus. Neque, tempore, rerum? Repellat necessitatibus error labore quo ipsum beatae tempore eos ducimus, cumque illum minima autem similique quaerat tempora quasi, reiciendis dignissimos quos blanditiis dicta praesentium repellendus doloremque voluptates mollitia ullam. Sunt atque qui sint veritatis possimus! Debitis ex voluptatem temporibus dolorem, laboriosam enim! Ad, illo. Dolor quos possimus delectus quasi sapiente perspiciatis corporis, totam facere magni voluptatibus nihil atque, libero quaerat, sit est pariatur officia esse impedit.</p>
+            <p><a href="" class="button button--outline button--xl">Learn more</a></p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<section class="image-carousel js-image-carousel">
+    {# @note: need iamges to crop to equal dimensions #}
+    <img src="/static/img/temp/image-carousel-1.jpg" alt="">
+    <img src="/static/img/temp/image-carousel-2.jpg" alt="">
+    <img src="/static/img/temp/image-carousel-3.jpg" alt="">
+</section>
+{% endblock %}

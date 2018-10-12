@@ -1,0 +1,137 @@
+.quick-contact {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+    background-color: palette(branding, green--l);
+    background-image: url('/static/img/contours.jpg');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: cover;
+
+
+    .l-container {
+        max-width: 960px;
+    }
+
+    &__title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-family: $font1;
+        color: #fff;
+        font-size: rem(24px);
+        @include tracking(200);
+        text-transform: uppercase;
+        font-weight: 700;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .hs-form {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -15px;
+        margin-right: -15px;
+
+        > div {
+            flex: 1 1 100%;
+            margin-bottom: 30px;
+            padding: 0 15px;
+
+            @include mq( 500px ) {
+
+                &.hs_firstname,
+                &.hs_lastname {
+                    flex-basis: 50%;
+                }
+                &.hs_state,
+                &.hs_zip {
+                    flex-basis: 50%;
+                }
+            }
+            @include mq( 700px ) {
+
+                &.hs_firstname,
+                &.hs_lastname,
+                &.hs_email {
+                    flex-basis: 33.3333%;
+                }
+                &.hs_city {
+                    flex-basis: 50%;
+                }
+                &.hs_state,
+                &.hs_zip {
+                    flex-basis: 25%;
+                }
+            }
+        }
+
+        .hs-dependent-field {
+            margin-bottom: 0;
+
+            .hs-form-field {
+                margin-bottom: 30px;
+            }
+        }
+        .inputs-list {
+            align-items: center;
+            display: flex;
+            margin-bottom: 0;
+
+            li {
+                margin-bottom: 0;
+                margin-right: 2rem;
+
+                label {
+                    margin: 0;
+                }
+            }
+        }
+        label {
+            color: palette(branding, navy);
+            font-size: 0.7777rem;
+            line-height: 1;
+
+            .hs-form-required {
+                color: #F00;
+                font-size: 1.5em;
+                line-height: 0.5;
+            }
+        }
+        textarea {
+            min-height: 13em;
+        }
+        .actions {
+            text-align: center;
+        }
+        .hs-button {
+            @extend .button--neutral;
+            font-size: 0.875rem;
+
+            @include mq( $until: 560px ) {
+                max-width: none;
+                width: 100%;
+            }
+        }
+
+        .hs-error-msgs,
+        .hs-field-desc {
+            display: none !important;
+        }
+    }
+
+
+
+
+    #{$all-text-inputs},
+    select,
+    select[multiple=multiple] {
+        border-color: transparent;
+        border-width: 2px !important;
+
+        &:hover {
+            box-shadow: 0 3px 12px rgba(0,0,0, 0.1)
+        }
+
+        &:focus {
+            box-shadow: 0 3px 12px rgba(0,0,0, 0.3);
+        }
+    }
+}

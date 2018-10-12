@@ -1,0 +1,14 @@
+/* LAYERS */
+
+/**
+Keep z-indexes in check.
+When add a new element, add it to this list
+Add a new lisst for each stacking context
+If scoped to a specific object then don't update here - create a new list in that object's scss
+More info here - https://www.smashingmagazine.com/2014/06/sassy-z-index-management-for-complex-layouts/
+
+Usage:
+
+z-index: index($layers, modal);
+*/
+$layers: standard, collage-1, collage-2, collage-3, collage-4, subnav, nav, branding, overlay, modal;

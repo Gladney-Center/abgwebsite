@@ -1,0 +1,38 @@
+table {
+	font-feature-settings:"kern", "liga", "tnum";
+	width:100%;
+    border-collapse: collapse;
+}
+
+tr,
+td,
+th {
+	word-wrap: break-word;
+	white-space: nowrap;
+	vertical-align:middle;
+}
+
+th {
+	color:palette(base,fon--d);
+	cursor:pointer;
+	font-weight:700;
+	padding:0.5em .7em;
+	text-align:left;
+	border-bottom: 2px solid palette(base, font--xl);
+}
+
+td {
+	color: inherit;
+	font-weight:400;
+	padding:.5em .7em;
+	font-size:0.9em;
+}
+
+tr {
+	border-bottom: 1px solid palette(ui, grey);
+
+	&:focus,
+	&:hover {
+		background-color: rgba(#aaa,.1);
+	}
+}

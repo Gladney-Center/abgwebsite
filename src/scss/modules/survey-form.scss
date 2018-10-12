@@ -1,0 +1,41 @@
+.survey-form {
+    counter-reset: fields;
+    padding-bottom: 4rem;
+
+    .field-group {
+        margin-bottom: 3rem;
+
+        label {
+            line-height: 1.5;
+            margin-bottom: 1em;
+            padding-left: 1.25em;
+            text-indent: -1.25em;
+
+            &::before {
+                counter-increment: fields;
+                content: counter(fields) '.';
+            }
+        }
+    }
+
+    #{$all-text-inputs},
+    select,
+    select[multiple=multiple] {
+        border: 1px solid transparent;
+        background-color: #ececed;
+        font-size: rem(18px);
+        font-family: inherit;
+
+        &::placeholder {
+            color: palette(base, font--xl);
+        }
+
+        &:focus {
+            border-color: palette(branding, navy);
+        }
+    }
+
+    textarea {
+        height: 11em;
+    }
+}

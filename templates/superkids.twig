@@ -1,0 +1,66 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% set transform = {
+    width: 1518,
+    height: 361,
+    mode: 'crop',
+} %}
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+{% if entry.image | length %}
+    {% set headerBg = entry.image.first().getUrl( transform ) %}
+{% else %}
+    {% set headerBg = '/static/img/hero/hero-1.jpg' %}
+{% endif %}
+
+
+{% block main %}
+
+    <header class="banner" style="background-image: url('{{ headerBg }}')">
+        <h1 class="banner__heading">{{ heading | raw }}</h1>
+    </header>
+
+    <div class="page has-aside">
+
+        {% include '_modules/_content-blocks' with {'containerClass': ''} %}
+
+        <aside class="superkids">
+            <header class="superkids__header">
+                <img src="/static/img/superkids-logo.png" alt="Superkids logo" class="superkids__logo">
+                <h3 class="superkids__title">Latest blog posts</h3>
+            </header>
+
+
+            <ul class="superkids__posts">
+
+            {% set posts = craft.entries.section('superkidsBlog').limit(3) %}
+            {% for post in posts %}
+                {% set img = post.heading | replace({'s72-c': 's400'}) %}
+                {% set thumb = craft.imager.transformImage(img, {width: 400, height: 400}, {mode: 'crop'}) %}
+                <li>
+                    <a class="superkids__image" href="{{ post.websiteUrl }}" target="_blank" style="background-image: url('{{ thumb }}');"></a>
+                    <div class="superkids__extract">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.body | hacksaw(words='30', append='...') }}</p>
+                        <a href="{{ post.websiteUrl }}" target="_blank">Read More</a>
+                    </div>
+                </li>
+            {% endfor %}
+
+            </ul>
+
+
+            <nav class="superkids__links">
+                <a href="https://www.facebook.com/gladneysuperkids/" class="superkids__facebook" target="_blank">Facebook {{ svgSprite.icon('facebook-square', '') }}</a>
+                <a href="http://superkidscharity.blogspot.com/" target="_blank" class="superkids__blog">Visit Blog {{ svgSprite.icon('new-window', '') }}</a>
+                <a href="https://iamgladney.org/civicrm/contribute/transact?reset=1&id=4" class="superkids__donate">Donate to Superkids</a>
+            </nav>
+        </aside>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-bottom: 4rem;
+
+    @include mq( $until: 419px ) {
+        justify-content: center;
+    }
+
+    .team-member {
+        flex: 0 0 16rem;
+        padding: 0 20px;
+        margin-bottom: 3rem;
+
+        @include mq( 420px ) {
+            flex-basis: 50%;
+        }
+        @include mq( 500px ) {
+            flex-basis: 100%;
+        }
+        @include mq( 700px ) {
+            flex-basis: 33.3333%;
+        }
+    }
+}

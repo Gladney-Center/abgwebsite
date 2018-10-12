@@ -1,0 +1,34 @@
+{% extends '_layouts/site' %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = entry.title %}
+{% endif %}
+{% if entry.headerType is defined and entry.headerType == 'headerShort' %}
+    {% set headerClass = '' %}
+    {% set pageClass = '' %}
+{% else %}
+    {% set headerClass = 'banner--tall' %}
+    {% set pageClass = 'banner-overlap banner-overlap--big' %}
+{% endif %}
+
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <header class="banner {{ headerClass }}">
+        <h1 class="banner__heading">{{ heading | raw }}</h1>
+        {% if entry.subheading is not empty %}<p class="banner__subheading">{{ entry.subheading | widont }}</p>{% endif %}
+    </header>
+
+    <div class="page {{ pageClass }}">
+
+        {% include '_modules/_content-blocks' with {'containerClass': 'l-container--9'} %}
+
+    </div>
+
+{% endblock %}

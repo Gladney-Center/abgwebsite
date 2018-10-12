@@ -1,0 +1,27 @@
+.social-icons {
+
+    li {
+        display: inline-block;
+        margin-right: 0.25em;
+    }
+
+
+    a {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+
+        svg {
+            width: 1em;
+            height: 1em;
+            fill: palette(branding, salmon);
+        }
+
+        &:focus,
+        &:hover {
+            svg {
+                fill: palette(branding, green)
+            }
+        }
+    }
+}

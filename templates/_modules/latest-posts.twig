@@ -1,0 +1,26 @@
+<aside class="latest-posts">
+    <header class="latest-posts__header">
+        <h3 class="latest-posts__title">{{ title }}</h3>
+    </header>
+
+
+    <ul class="latest-posts__posts">
+        {% for post in posts %}
+            {% set img = post.heading | replace({'s72-c': 's400'}) %}
+            {% set thumb = craft.imager.transformImage(post.blogImage|srcFromImg, {width: 400, height: 400}, {mode: 'crop'}) %}
+            <li>
+              <a class="latest-posts__image" href="{{ post.websiteUrl }}" target="_blank" style="background-image: url('{{ thumb }}');"></a>
+              <div class="latest-posts__extract">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.body | hacksaw(words='30', append='...') }}</p>
+                <a href="{{ post.websiteUrl }}" target="_blank">Read More</a>
+              </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    <nav class="latest-posts__links">
+        <a href="{{ footer.link }}" target="{{ footer.target }}">{{ footer.text|raw }}</a>
+    </nav>
+</aside>

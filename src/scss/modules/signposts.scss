@@ -1,0 +1,148 @@
+.signposts {
+
+    @include mq( 992px ) {
+        display: flex;
+    }
+
+    &__box {
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: block;
+        flex: 1 1 50%;
+        min-height: 50vw;
+        padding: 3.3333em 0;
+        position: relative;
+
+        @include mq( 480px ) {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+        @include mq( 700px ) {
+            padding-left: 3.3333em;
+            padding-right: 3.3333em;
+        }
+        @include mq( 992px ) {
+            min-height: 23.8888em;
+        }
+
+        &::before {
+            bottom: 0;
+            content: ' ';
+            display: block;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: opacity 200ms ease;
+            z-index: 0;
+
+            @include mq( 800px ) {
+                opacity: 0;
+            }
+        }
+
+        &:nth-child(2) {
+            border-top: 4px solid #FFF;
+
+            @include mq( 992px ) {
+                border-top: none;
+                border-left: 4px solid #FFF;
+            }
+        }
+        &.brand-green::before {
+            background-color: rgba(palette(branding, pri), 0.7);
+        }
+        &.brand-salmon::before {
+            background-color: rgba(palette(branding, sec), 0.7);
+        }
+        &.brand-blue::before {
+            background-color: rgba(palette(branding, blue--l), 0.7);
+        }
+    }
+
+    .l-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    &__title {
+        font-size: em(45px);
+        font-family: $font2;
+        text-transform: uppercase;
+        color: #FFF;
+        line-height: 1;
+        text-shadow: 0 0 12px rgba(0,0,0, 0.5);
+
+        @include mq($from: 760px, $until: 900px) {
+           font-size: em(36px);
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            width: 0.95em;
+            height: 0.12em;
+            background-color: #FFF;
+            margin-top: 0.15em;
+
+        }
+    }
+
+    &__content {
+        margin-bottom: 0;
+        margin-top: auto;
+        text-align: right;
+        transition: opacity 200ms ease;
+
+        @include mq( 800px ) {
+            opacity: 0;
+        }
+
+        .subtext {
+            @include no-smoothing();
+            @include tracking(10);
+            color: #fff;
+            display: block;
+            font-size: rem(18px);
+            font-weight: 500;
+            line-height: 1.75;
+            text-align: left;
+        }
+        .cta {
+            color: #FFF;
+            text-transform: uppercase;
+            display: inline-block;
+            font-weight: 500;
+            border-bottom: 2px solid;
+            line-height: 1;
+
+            &::after {
+                content: "»";
+                font-weight: 700;
+                margin-left: 0.2em;
+            }
+        }
+    }
+
+    div + &__box,
+    a:hover,
+    a:focus {
+
+        &::before,
+        .signposts__content {
+            opacity: 1;
+        }
+    }
+
+    .wysiwyg + & {
+        margin-top: 4rem;
+    }
+}

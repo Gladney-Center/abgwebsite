@@ -1,0 +1,15 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <header class="banner">
+        <h1 class="banner__heading">{{ entry.heading }}</h1>
+    </header>
+
+    {% include '_modules/_content-blocks' %}
+
+{% endblock %}

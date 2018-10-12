@@ -1,0 +1,73 @@
+.thumbnail-carousel {
+    max-width: 408px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__carousel {
+        img {
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+    }
+
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8px;
+    }
+
+
+    &__thumbs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+            display: block;
+            width: 54px;
+            height: 54px;
+            margin-right: 4px;
+            margin-left: 4px;
+
+            img {
+                width: 100%;
+                transition: opacity 0.3s ease;
+
+                &:focus,
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+
+    &__prev,
+    &__next {
+        display: block;
+        width: 24px;
+        height: 24px;
+
+        &:hover {
+            svg {
+                fill: palette(branding, green);
+            }
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: palette(branding, teal);
+        }
+    }
+
+    &__prev {
+        margin-right: 12px;
+    }
+
+    &__next {
+        margin-left: 12px;
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/facebook</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/facebook" transform="translate(-1.000000, -1.000000)" fill="#000000">
+            <path d="M17,9 C17,4.5859375 13.4140625,1 9,1 C4.5859375,1 1,4.5859375 1,9 C1,13.359375 4.484375,16.90625 8.8203125,17 L8.8203125,10.6640625 L7,10.6640625 L7,8.6640625 L8.8203125,8.6640625 L8.8203125,6.6640625 C8.8203125,5.078125 9.7890625,4.0078125 11.7109375,4.0078125 C12.5546875,4.0078125 13.1484375,4.140625 13.1484375,4.140625 L13.1484375,6 L11.875,6 C11.2890625,6 11,6.328125 11,6.90625 L11,8.6640625 L13,8.6640625 L12.7109375,10.6640625 L11,10.6640625 L11,16.75 C14.453125,15.859375 17,12.7265625 17,9 Z" id="facebook"></path>
+        </g>
+    </g>
+</svg>

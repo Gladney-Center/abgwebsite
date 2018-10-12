@@ -1,0 +1,41 @@
+.l-home-intro {
+    overflow-x: hidden;
+
+    @include mq(900px) {
+       background: linear-gradient(to right, #FFF 0%, #FFF 50%, #f3f3f3 50%, #f3f3f3 100%);
+    }
+
+    .left {
+        margin-top: 4rem;
+        max-width: 40rem;
+        @include grid-column(15);
+
+        @include mq(900px) {
+            @include grid-column(7);
+            margin-top: 8rem;
+        }
+    }
+
+
+    .right {
+        background: #f3f3f3;
+        @include grid-column(15);
+
+        @include mq(900px) {
+            @include grid-column(7);
+            @include grid-push(1);
+        }
+    }
+
+    .lede {
+        @include mq(900px) {
+            margin-top: 4rem;
+        }
+    }
+
+
+    .title-list {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+}

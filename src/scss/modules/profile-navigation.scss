@@ -1,0 +1,53 @@
+/* nav */.profile-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: palette(branding, navy);
+    color: #fff;
+    font-family: $font2;
+    font-size: rem(24px);
+    line-height: 2.3;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    @include mq(m) {
+        font-size: rem(30px);
+    }
+
+    @include mq(xl) {
+        font-size: rem(36px);
+    }
+
+
+    a {
+        text-align: center;
+
+        &:link,
+        &:visited {
+            color: #fff;
+        }
+
+        &:focus,
+        &:hover {
+            color: palette(branding, green--l)
+        }
+    }
+
+
+    &__prev,
+    &__next {
+        width: 50%;
+    }
+
+
+    &__prev {
+        border-right: 2px solid #215e7a;
+    }
+
+
+    &__all {
+        width: 100%;
+        border-top: 2px solid #215e7a;
+    }
+}

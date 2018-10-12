@@ -1,0 +1,91 @@
+.big-three {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    background: palette(branding, green--l);
+
+    @include mq(m) {
+    }
+
+    @include mq(800px) {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+
+    a {
+        display: block;
+        margin-bottom: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(#fff, 0.2);
+
+        @include mq(m) {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+            border: none;
+        }
+
+        @include mq(800px) {
+            width: 33%;
+            padding-top: 3.5rem;
+            padding-bottom: 3rem;
+            margin-bottom: 0;
+            border-bottom: none;
+            border-right: 1px solid rgba(#fff, 0.2);
+        }
+
+        @include mq(l) {
+            padding-left: 3rem;
+            padding-right: 3rem
+        }
+
+        &:link,
+        &:visited {
+            color: #fff;
+        }
+
+        &:focus,
+        &:hover {
+            color: palette(branding, navy);
+        }
+    }
+
+
+    strong {
+        display: block;
+        font-size: rem(66px);
+        line-height: 0.9;
+        font-family: $font2;
+        text-transform: uppercase;
+    }
+
+
+    br {
+        display: none;
+
+        @include mq(800px) {
+            display: block;
+        }
+    }
+
+
+    span {
+        display: block;
+        margin-top: 0.5em;
+        font-family: $font3;
+        font-style: italic;
+        font-size: rem(24px);
+        font-weight: 600;
+
+        &::before {
+            content: "– ";
+        }
+    }
+}

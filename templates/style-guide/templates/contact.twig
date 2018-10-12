@@ -1,0 +1,157 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+<div class="subnav">
+    <div class="l-container">
+        <strong class="subnav__label">Section</strong>
+        <nav>
+            <ul class="subnav__nav">
+                <li><a href="">Item</a></li>
+                <li><a class="is-active" href="">Item</a></li>
+                <li><a href="">Item</a></li>
+                <li><a href="">Item</a></li>
+                <li><a href="">Item</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+
+
+<header class="banner banner--tall" style="background-image: url('/static/img/temp/banner-1.jpg')">
+</header>
+
+
+
+
+
+
+<div class="l-container l-container--11">
+    <section class="contact-card">
+        <div class="contact-card__intro">
+            <p class="lede"><em>At Gladney</em> you'll find not only passion for adoption, but also an established legacy of service, professionalism and integrity. Please contact us today to speak to one of our adoption professionals.</p>
+        </div>
+
+        <div class="contact-card__logo">
+            <img src="/static/img/branding/gladney-logo-white.svg" alt="{{ siteName }} logo">
+        </div>
+
+        <div class="contact-card__address">
+            <strong>Gladney Center for Adoption</strong>
+            <p>
+                6300 John Ryan Drive<br>
+                Fort Worth, Texas 76132-4122<br>
+                <a href="tel:8179226000">817-922-6000</a>
+            </p>
+        </div>
+    </section>
+</div>
+
+
+
+
+
+<div class="l-container u-push--bottom--4">
+    <h2 class="underline-title u-push--bottom--2">Telephone a regional office</h2>
+    <dl class="telephone-list l-matrix l-matrix--3">
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+        <div>
+            <dt>Fort Worth, TX</dt>
+            <dd><a class="plain-link" href="tel:8179226000">817-922-6000</a></dd>
+        </div>
+
+    </dl>
+</div>
+
+
+
+
+
+<section class="quick-contact">
+    <div class="l-container">
+        <h3 class="quick-contact__title">Quick Contact</h3>
+        <form action="">
+            <ul class="form-fields">
+                <li class="single-line">
+                    <label for="name" class="u-sr-only">Name</label>
+                    <input type="text" placeholder="Name" required id="name">
+
+                    <label for="phone" class="u-sr-only">Phone</label>
+                    <input type="tel" placeholder="Phone" required id="phone">
+
+                    <label for="email" class="u-sr-only">Email Address</label>
+                    <input type="email" placeholder="Email" required id="email">
+
+                    <label for="zip" class="u-sr-only">Zip Code</label>
+                    <input type="text" placeholder="Zip Code" required id="zip">
+                </li>
+
+                <li>
+                    <div class="select select--salmon u-full-width">
+                        <select name="" id="">
+                            <option value="What are you contacting us about today?" selected disabled>What are you contacting us about today?</option>
+                            <option value="">Lorem ipsum dolor</option>
+                            <option value="">Consectetur adipisicing elit</option>
+                            <option value="">Suscipit, soluta</option>
+                        </select>
+                    </div>
+                </li>
+
+                <li>
+                    <label for="message" class="u-sr-only">Your Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message"></textarea>
+                </li>
+
+                <li class="form-actions">
+                    <input class="button button--wide button--neutral" type="submit" value="Submit">
+                </li>
+            </ul>
+        </form>
+    </div>
+</section>
+{% endblock %}

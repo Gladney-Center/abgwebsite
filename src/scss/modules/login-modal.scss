@@ -1,0 +1,89 @@
+.modal.login-modal {
+    padding-top: 7rem;
+    padding-bottom: 10rem;
+}
+
+.login-modal {
+    -webkit-font-smoothing: antialiased;
+
+    .l-container {
+        max-width: 660px;
+    }
+
+    img.login-modal__icon {
+        display: inline-block;
+        width: 60px;
+        height: auto;
+        margin-bottom: 3rem;
+    }
+
+
+    &__intro {
+        font-family: $font3;
+        font-style: italic;
+        font-weight: 600;
+        font-size: rem(28px);
+        line-height: 1.17;
+    }
+
+
+    &__form {
+        margin: 3rem auto;
+        max-width: 400px;
+
+        label {
+            color: #fff;
+            font-weight: 500;
+            font-size: rem(18px);
+        }
+
+        input {
+            border-radius: 2px;
+            border: 1px solid palette(branding, green--l);
+
+            &:hover {
+               border: 1px solid palette(branding, green--l);
+            }
+
+            &:focus {
+                border: 1px solid palette(branding, green--l);
+            }
+        }
+
+        .button.button {
+            padding-left: 3rem;
+            padding-right: 3rem;
+            background-color: palette(branding, green--l);
+            border-radius: 2px;
+            border: none;
+
+            &:focus,
+            &:hover {
+                background-color: palette(branding, salmon);
+            }
+        }
+    }
+
+
+    &__extra {
+        font-size: rem(16px);
+        color: palette(branding, green--l);
+        @include tracking(50);
+
+        a {
+            color: palette(branding, green--l);
+            display: inline-block;
+            font-weight: 600;
+
+            &:link,
+            &:visited {
+                border-bottom: 1px solid;
+            }
+
+            &:focus,
+            &:hover {
+                color: palette(branding, salmon);
+            }
+        }
+    }
+}

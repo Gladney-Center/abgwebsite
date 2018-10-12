@@ -1,0 +1,43 @@
+// MAGNIFIC POPUP FADE IN/OUT ANIMATION
+.mfp-fade {
+
+    /* overlay at start */
+    &.mfp-bg {
+        opacity: 0;
+        transition: all 300ms ease-out;
+
+        /* overlay animate in */
+        &.mfp-ready {
+            opacity: 1;
+        }
+        /* overlay animate out */
+        &.mfp-removing {
+            opacity: 0;
+        }
+    }
+
+    &.mfp-wrap {
+
+        /* content at start */
+        .mfp-content {
+            opacity: 0;
+            transition: all 300ms ease-out;
+        }
+
+        &.mfp-ready {
+
+            /* content animate in */
+            .mfp-content {
+                opacity: 1;
+            }
+        }
+
+        &.mfp-removing {
+
+            /* content animate out */
+            .mfp-content {
+                opacity: 0;
+            }
+        }
+    }
+}

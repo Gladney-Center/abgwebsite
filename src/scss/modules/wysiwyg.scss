@@ -1,0 +1,83 @@
+.wysiwyg {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        margin-bottom: 1em;
+
+        &:not(:first-child) {
+            margin-top: 2em;
+        }
+    }
+
+    h1,
+    .alpha {
+        font-family: $font3;
+        font-style: italic;
+        font-weight: 400;
+        color: palette(branding, navy);
+        font-size: rem(36px);
+    }
+
+    h2,
+    .beta {
+        font-family: $font3;
+        font-style: italic;
+        font-weight: 600;
+        color: palette(branding, navy);
+        font-size: rem(24px);
+    }
+
+    h3,
+    .gamma {
+        margin-top: 2.5em;
+        font-family: $font1;
+        color: palette(branding, salmon);
+        font-size: rem(16px);
+        @include tracking(40);
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    h4,
+    .delta {
+        font-family: $font1;
+        color: palette(base, font--xl);
+        font-size: rem(14px);
+        @include tracking(40);
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    h5,
+    .epsilon {
+        font-family: $font1;
+        color: palette(base, font--d);
+        font-size: rem(14px);
+        @include tracking(0);
+        font-weight: 600;
+        text-transform: none;
+    }
+
+    p:only-child {
+        margin-bottom: 0;
+    }
+
+    a {
+        border-bottom: 1px solid palette(branding, pri);
+    }
+
+    &:last-child,
+    &:only-child {
+        margin-bottom: 4rem;
+    }
+
+    ul {
+        @extend .bullet-list;
+    }
+
+    ol {
+        @extend .numbered-list;
+    }
+}

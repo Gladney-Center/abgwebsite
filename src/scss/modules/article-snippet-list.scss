@@ -1,0 +1,16 @@
+/* ul */.article-snippet-list {
+    font-size: rem(16px);
+    line-height: 1.6;
+
+    li {
+        margin-bottom: 1.4rem;
+
+        a {
+            display: inline-block;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

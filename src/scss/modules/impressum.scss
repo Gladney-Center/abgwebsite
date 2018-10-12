@@ -1,0 +1,41 @@
+.impressum {
+    background-color: #FFF;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    position: relative;
+
+    &__logos {
+        @include mq(500px) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @include mq(1100px) {
+            @include grid-column(7, $grid--17);
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            transition: opacity 0.3s ease;
+
+            &:focus,
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+
+    &__text {
+        font-size: rem(10px);
+        color: #000;
+
+        @include mq(1100px) {
+            @include grid-column(10, $grid--17);
+        }
+    }
+
+}

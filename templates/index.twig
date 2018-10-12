@@ -1,0 +1,183 @@
+{% extends '_layouts/site' %}
+
+{% set collageTransform = {
+    width: 380,
+    height: 490,
+    mode: 'crop',
+} %}
+
+{% block main %}
+
+{% for hero in entry.hero %}
+    <section class="hero" style="background-image: url('/static/img/hero/hero-1.jpg');">
+
+        <div class="hero__top l-container">
+            <h1>
+                <span>{{ hero.heading }}</span>
+                {% for link in hero.links %}
+                    {% if link.entry | length %}
+                        {% set url = link.entry.first().url %}
+                    {% else %}
+                        {% set url = link.websiteUrl %}
+                    {% endif %}
+                    <a href="{{ url }}">{{ link.linkText }}</a>
+                {% endfor %}
+            </h1>
+        </div>
+
+        <div class="hero__bottom l-container">
+            {{ hero.introduction }}
+        </div>
+    </section>
+{% endfor %}
+
+
+
+<section class="l-home-intro">
+    <div class="l-container l-container--17">
+        <div class="l-grid">
+            <div class="left">
+                {% for block in entry.about %}
+                    <h1 class="line-title epsilon"><span>{{ block.heading }}</span></h1>
+                    <p class="lede u-col-green--l">{{ block.introduction }}</p>
+                    <p>{{ block.body }}</p>
+                {% endfor %}
+
+                {% for block in entry.services %}
+                    <section class="title-list">
+                        <h3 class="title-list__title epsilon">{{ block.heading }}</h3>
+
+                        <div class="title-list__content">
+                            <ul class="title-list__list">
+                                {% for item in block.list %}
+                                    {% if item.entry | length %}
+                                        {% set url = item.entry.first().url %}
+                                    {% else %}
+                                        {% set url = item.websiteUrl %}
+                                    {% endif %}
+                                    <li>
+                                        {% if url is not empty %}<a href="{{ url }}">{% endif %}
+                                            {{ item.item }}
+                                        {% if url is not empty %}</a>{% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+                            {% if block.bottomLink | length %}
+                                {% if block.bottomLink.entry | length %}
+                                    {% set url = block.bottomLink.entry.first().url %}
+                                {% else %}
+                                    {% set url = block.bottomLink.websiteUrl %}
+                                {% endif %}
+                                <a href="{{ url }}" class="title-list__link">{{ block.bottomLink.linkText }}</a>
+                            {% endif %}
+                        </div>
+
+                    </section>
+                {% endfor %}
+            </div>
+
+
+            <div class="right">
+                <section class="photo-collage">
+                    <div class="photo-collage__wrapper">
+                        <h2 class="photo-collage__heading">Learn More About Our...</h2>
+
+                        <ul class="photo-collage__list">
+                            {% for block in entry.collage %}
+                                {% if block.entry | length %}
+                                    {% set url = block.entry.first().url %}
+                                {% else %}
+                                    {% set url = block.websiteUrl %}
+                                {% endif %}
+                                <li>
+                                    <a href="{{ url }}" title="Find out more about our {{ block.text }}">
+                                        <img src="{{ block.image.first().getUrl( collageTransform ) }}" alt="{{ block.text }}">
+                                        <span>{{ block.text }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="big-three">
+    {% for item in entry.bigThreeLinks %}
+        {% if item.entry | length %}
+            {% set url = item.entry.first().url %}
+        {% else %}
+            {% set url = item.websiteUrl %}
+        {% endif %}
+        <a href="{{ url }}"><strong>{{ item.linkText | nl2br | raw }}</strong> <span>Learn More</span></a>
+    {% endfor %}
+</section>
+
+
+
+{% if entry.videoEmbed | length %}
+<section class="video-tease u-push--bottom--4" style="background-image: url('{{ entry.videoEmbed.first().posterImage.first().getUrl() }}');">
+    <a href="#video-embed" class="video-tease__icon js-video-modal-trigger">
+        <span class="u-sr-only">Play video</span>
+        <img src="/static/img/icons/play-button.svg" alt="Play">
+    </a>
+</section>
+
+<div id="video-embed" class="mfp-hide">
+    {{ craft.embedder.embed(entry.videoEmbed.first().videoUrl) }}
+</div>
+{% endif %}
+
+
+
+
+<section>
+    <div class="l-container">
+        <h2 class="line-title"><span>Our Regional Offices</span></h2>
+        <ul class="address-list l-grid l-grid--3-col">
+
+            <li>
+                <h3>Fort Worth Adoption Office</h3>
+                <p class="u-text-s"><span class="group">{{ generalInfo.address.street }}{% if generalInfo.address.street2 is not empty %} {{ generalInfo.address.street2 }}{% endif %}</span> <span class="group">{{ generalInfo.address.city }}, {{ generalInfo.address.region }} {{ generalInfo.address.postalCode }}</span>
+                <a class="plain-link" href="tel:+1{{ generalInfo.phone | replace({'-': ''}) }}">{{ generalInfo.phone }}</a></p>
+            </li>
+
+            {% for office in craft.entries.section('regionalOffices').order('title asc') %}
+            <li>
+                <h3 class="u-flush--bottom">{{ office.title }}</h3>
+                <p class="u-text-s">{% if office.address.street is not empty %}<span class="group">{{ office.address.street }}{% if office.address.street2 is not empty %} {{ office.address.street2 }}{% endif %}</span> {% endif %}<span class="group">{{ office.address.city }}, {{ office.address.region }} {{ office.address.postalCode }}</span>
+                <a class="plain-link" href="tel:+1{{ office.phone | replace({'-': ''}) }}">{{ office.phone }}</a></p>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</section>
+
+
+
+
+{% if entry.ctaBucket | length %}
+    {% for block in entry.ctaBucket %}
+        <section class="cta-bucket cta-bucket--with-text cta-bucket--shadow">
+            <div class="l-container">
+                {% if block.optionalTextBlock | length %}
+                <p>{{ block.optionalTextBlock | widont }}</p>
+                {% endif %}
+
+                <a href="{% if block.button.linkedPage.first() | length %}{{ block.button.linkedPage.first().url() }}{% elseif block.button.websiteUrl | length %}{{ block.button.websiteUrl }}{% endif %}" class="button button--xl button--outline button--salmon">
+                    {{ block.button.label | raw }}
+
+                </a>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
+
+{% endblock %}

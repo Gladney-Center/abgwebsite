@@ -1,0 +1,19 @@
+/* dl */.telephone-list {
+    dt {
+        display: inline-block;
+        font-weight: 700;
+        color: palette(branding, green);
+        margin-top: 1em;
+    }
+
+    dd {
+        display: inline-block;
+        color: palette(base, font--l);
+        font-weight: normal;
+
+        &::before {
+            content: "::";
+            margin-right: 0.25em;
+        }
+    }
+}

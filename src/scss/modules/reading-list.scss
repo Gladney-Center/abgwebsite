@@ -1,0 +1,48 @@
+.reading-list {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    padding-bottom: 4rem;
+
+    &::after {
+        content: '';
+        display: none;
+    }
+
+    .book {
+        align-items: center;
+        display: flex;
+        flex: 0 1 50%;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        text-align: center;
+
+        @include mq( 480px ) {
+            flex-basis: 33.3333%;
+        }
+
+        .img {
+            margin-bottom: 0.75rem;
+
+            a {
+                border: 4px solid #f0f0f0;
+                display: block;
+                transition: border-color 200ms ease;
+
+                &:hover {
+                    border-color: palette(branding, sec);
+                }
+            }
+            img {
+                display: block;
+            }
+        }
+        .label {
+            font-size: 14px;
+            line-height: 1.2;
+        }
+    }
+}

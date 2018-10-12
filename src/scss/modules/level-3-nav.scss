@@ -1,0 +1,84 @@
+$level-3-nav-break: 1300px;
+
+.level-3-nav {
+
+    @include mq( $until: $level-3-nav-break - 1px ) {
+
+        & + .l-container {
+            order: -1;
+        }
+    }
+
+    nav {
+        background: palette(branding, salmon);
+        color: #FFF;
+        margin: 0 auto 2.5rem;
+        max-width: 320px;
+        width: 100%;
+
+        ul {
+            margin-bottom: 0;
+        }
+
+        li {
+            margin-bottom: 0;
+            border-bottom: 2px solid #b46450;
+
+            &:last-child {
+                border: none;
+            }
+        }
+
+        a {
+            display: block;
+            padding: 0.6rem 0.25rem;
+            font-size: rem(12px);
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: background-color 200ms ease;
+            @include tracking(50);
+
+            &:before {
+                content: "•";
+                margin-left: 0.4rem;
+                margin-right: 0.4rem;
+                font-size: 1.5em;
+                line-height: 0;
+                position: relative;
+                top: 0.15em;
+            }
+
+            &:link,
+            &:visited {
+                color: #fff;
+            }
+
+            &:focus,
+            &:hover {
+                background-color: #d3755d;
+                color: #fff;
+            }
+
+            &.is-active {
+                color: #FFF;
+                background-color: #b46450;
+            }
+        }
+
+        @include mq( $level-3-nav-break ) {
+            max-width: 230px;
+            position: absolute;
+            right: 100%;
+            margin-right: 2.7777rem;
+            top: 100%;
+        }
+
+        @include mq( 1480px ) {
+            max-width: 320px;
+
+            a {
+                font-size: rem(16px);
+            }
+        }
+    }
+}

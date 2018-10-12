@@ -1,0 +1,76 @@
+.location-map {
+    margin: 0 auto 4rem;
+    max-width: 1180px;
+
+    @include mq(700px) {
+        display: flex;
+        align-items: stretch;
+    }
+
+
+    &__map {
+        flex: 1 1 auto;
+        height: 15rem;
+        background-color: palette(ui, grey);
+
+        @include mq(700px) {
+            height: auto;
+            min-height: 360px;
+        }
+    }
+
+
+    &__location {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex: 0 0 auto;
+        padding: 2rem 1rem;
+        background-color: palette(branding, green);
+        text-align: center;
+        color: #fff;
+        font-size: rem(16px);
+        line-height: 1.75;
+
+        @include mq(700px) {
+            align-items: flex-start;
+            margin-left: auto;
+            padding: 3rem 2rem;
+            text-align: left;
+        }
+
+        @include mq(800px) {
+            padding: 5rem 3rem;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+
+        a {
+            &:link,
+            &:visited {
+                color: #fff;
+            }
+        }
+    }
+
+
+    &__title {
+        font-family: $font1;
+        font-size: 1em;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+
+    .button {
+        background-color: palette(branding, green--d);
+
+        &:focus,
+        &:hover {
+            background-color: palette(branding, salmon);
+        }
+    }
+}

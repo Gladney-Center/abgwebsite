@@ -1,0 +1,49 @@
+.image-carousel {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+
+    @include mq(m) {
+        margin-top: 4rem;
+        margin-bottom: 5rem;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+
+    .body--super-kids & {
+
+        @include mq( 992px ) {
+            margin-bottom: 0;
+        }
+    }
+
+    img {
+        width: $max-width;
+        max-width: calc(100% - 60px);
+        height: auto;
+        opacity: 0.5;
+
+        @include mq(m) {
+            width: 70%;
+            max-width: $max-width - 40px;
+            margin-left: $gutter/2;
+            margin-right: $gutter/2;
+            opacity: 1;
+        }
+
+        &.is-selected {
+            opacity: 1;
+        }
+    }
+
+
+    &--small {
+        img {
+            display: inline-block;
+            width: auto;
+            max-width: none;
+            height: 10rem;
+        }
+    }
+}

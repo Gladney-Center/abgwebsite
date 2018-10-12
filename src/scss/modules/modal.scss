@@ -1,0 +1,96 @@
+/* div */.modal {
+    position: relative;
+    width: 1200px;
+    max-width: calc(100% - 2rem);
+    margin: 1rem auto;
+    padding: 4rem 1rem 2rem 1rem;
+    background: palette(branding, navy);
+    text-align: center;
+    color: #fff;
+
+    @include mq(600px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+// NOTE: I made this a dark overlay because the close button was white
+// which didn't show on a white overlay.  I didn't have time to mess
+// with the SVG, so this was just to get it to the client.
+.mfp-bg {
+    background: rgba(palette(branding, navy), 0.95);
+    // opacity: 0.9;
+}
+
+
+.mfp-close.mfp-close {
+    display: flex;
+    position: fixed;
+    top: 0.5rem;
+    right: 1rem;
+    width: auto;
+    height: auto;
+    padding: 10px 0;
+    line-height: 1;
+    font-size: rem(12px);
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #fff;
+    @include tracking(50);
+    opacity: 0.8;
+    cursor: pointer;
+
+    &::after {
+        content: "";
+        margin-left: 0.25em;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        background-image: url('/static/img/icons/close-circle.svg');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &:focus,
+    &:hover {
+        opacity: 1;
+    }
+
+    .wizard & {
+        border: 2px solid #FFF;
+        font-size: 12px;
+        right: 1rem;
+        padding: 0.75em 1.25em;
+        top: 1rem;
+
+        &::after {
+            content: '';
+            display: none;
+        }
+    }
+}
+
+
+/* Video embed version */
+.modal--video {
+}
+
+
+/* Wizard version */
+.modal--wizard {
+
+    .mfp-container {
+        padding: 0;
+    }
+    .mfp-content {
+        max-height: 100vh;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
+        padding: 0;
+
+        @include mq( 1100px ) {
+            overflow-y: visible;
+        }
+    }
+}

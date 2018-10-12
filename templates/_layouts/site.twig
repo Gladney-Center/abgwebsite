@@ -1,0 +1,365 @@
+{% extends '_layouts/base' %}
+
+{% if bodyClass is defined %}
+	{% set bodyClass = entry is defined ? bodyClass ~ ' body--' ~ entry.section.name | kebab : bodyClass ~ ' body--' ~ craft.request.firstSegment %}
+{% else %}
+	{% set bodyClass = entry is defined ? 'body--' ~ entry.section.name | kebab : 'body--' ~ craft.request.firstSegment %}
+{% endif %}
+
+{% set segments = craft.request.getSegments() %}
+
+{% block body %}
+
+	{% block header -%}
+		<header id="header-main" class="site-header">
+		    <div class="l-container l-container--17">
+		        <a href="/" class="site-header__branding">
+		            <img src="/static/img/branding/gladney-logo.svg" alt="{{ siteName }} logo">
+		        </a>
+
+
+		        <a href="" class="site-nav-toggle js-site-nav-toggle"></a>
+
+
+		        <nav class="site-nav">
+		            <ul class="site-nav__primary">
+		            {% for link in navTop.linksList.level(1) %}
+		            	{% set nodeHandle = link.label | camel %}
+		            	{% set nodeSlug = link.label | kebab %}
+		            	{% set activeSlug = '' %}
+						{% set activeSubSlug = '' %}
+			            {% if segments | length %}
+							{% set activeSlug = segments[0] | kebab %}
+
+							{% if segments | length > 1 %}
+								{% set activeSubSlug = segments[1] | kebab %}
+							{% endif %}
+			            {% endif %}
+			            {% if link.linkedPage | length %}
+							{% set url = link.linkedPage.first().url %}
+							{% set target = '' %}
+						{% else %}
+							{% set url = link.websiteUrl %}
+							{% set target = '_blank' %}
+			            {% endif %}
+
+						<li><a{% if nodeSlug == activeSlug %} class="is-active"{% endif %} href="{{ url }}" target="{{ target }}">{{ link.label }}</a>
+
+							{% set subitems = craft.entries.section( nodeHandle ).level(2) %}
+							{% if subitems | length %}
+							<ul class="subnav-list{% if nodeSlug == activeSlug %} is-active{% endif %}">
+
+								{% for item in subitems %}
+									{% if item.type == 'redirect' and item.websiteUrl is not empty %}
+										{% set url = item.websiteUrl %}
+										{% set target = '_blank' %}
+									{% else %}
+										{% set url = item.url %}
+										{% set target = '_self' %}
+									{% endif %}
+
+								<li><a{% if item.slug == activeSubSlug %} class="is-active"{% endif %} href="{{ url }}" target="{{ target }}">{{ item.title }}</a></li>
+								{% endfor %}
+
+							</ul>
+							{% endif %}
+
+						</li>
+		            {% endfor %}
+
+		            </ul>
+
+		            <ul class="site-nav__secondary">
+		            {% for link in navSecondary.linksList.level(1) %}
+		            	{% if link.linkedPage | length %}
+							{% set url = link.linkedPage.first().url %}
+							{% set target = '' %}
+						{% else %}
+							{% set url = link.websiteUrl %}
+							{% set target = '_blank' %}
+			            {% endif %}
+		                <li><a href="{{ url }}" target="{{ target }}">{{ link.label }}</a></li>
+		            {% endfor %}
+		            </ul>
+		        </nav>
+		    </div>
+		</header>
+	{% endblock %}
+
+
+
+
+
+	<main id="main" class="main">
+		{% block main %}{% endblock %}
+	</main>
+
+
+
+
+
+	{% block footer -%}
+		<footer id="footer-main" class="site-footer">
+		    <div class="l-container">
+		        <div class="l-grid">
+		            <section class="site-footer__links">
+		                <h5 class="site-footer__title">Other links</h5>
+		                <ul>
+			            {% for link in navOther.linksList.level(1) %}
+			            	{% if link.linkedPage | length %}
+								{% set url = link.linkedPage.first().url %}
+								{% set target = '' %}
+							{% else %}
+								{% set url = link.websiteUrl %}
+								{% set target = '_blank' %}
+				            {% endif %}
+				            {% if link.class == 'adopted' %}
+								{% set label = '<span class="adopted">Adopt<i>Ed</i></span>' %}
+				            {% else %}
+				            	{% set label = link.label %}
+				            {% endif %}
+
+			                <li><a href="{{ url }}" target="{{ target }}">{{ label | raw }}</a></li>
+			            {% endfor %}
+		                </ul>
+
+		                <ul class="social-icons site-footer__social">
+				        {% for link in navSocial.linksList.level(1) %}
+		                    <li><a href="{{ link.websiteUrl }}" target="_blank">{{ svgSprite.icon( link.class,link.label) }}</a></li>
+		                {% endfor %}
+		                </ul>
+		            </section>
+
+
+		            <section class="site-footer__events">
+		                <h5 class="site-footer__title"><a href="https://iamgladney.org/all-upcoming-events" target="_blank" title="See all events...">Upcoming Events</a></h5>
+		                <ul class="article-snippet-list">
+
+							{% set params = {
+								section: 'upcomingEvents',
+								status: 'pending',
+								limit: 3,
+								order: 'postDate asc',
+							} %}
+		                	{% set events = craft.entries(params) %}
+
+		                	{% for event in events %}
+		                    <li>
+		                        <a href="{{ event.websiteUrl }}" target="_blank">
+		                            <strong>{{ event.postDate | date("F j, Y") }}</strong>
+		                            <p>{{ event.title }}</p>
+		                        </a>
+		                    </li>
+		                	{% endfor %}
+
+		                </ul>
+		            </section>
+
+
+		            <section class="site-footer__posts">
+		                <h5 class="site-footer__title"><a href="http://blog.adoptionsbygladney.com" target="_blank">Gladney Blog</a></h5>
+		                <ul class="article-snippet-list">
+
+							{% set params = {
+								section: 'blog',
+								limit: 3,
+							} %}
+		                	{% set posts = craft.entries(params) %}
+
+		                	{% for post in posts %}
+		                    <li>
+		                        <a href="{{ post.websiteUrl }}" target="_blank">
+		                            <strong>{{ post.postDate | date("F j, Y") }}</strong>
+		                            <p>{{ post.title }}</p>
+		                        </a>
+		                    </li>
+		                	{% endfor %}
+
+		                </ul>
+		            </section>
+		        </div>
+		    </div>
+		</footer>
+
+
+
+
+		<section class="newsletter-signup">
+		    <div class="l-container">
+		        <h5>Stay Connected with&nbsp;Us</h5>
+		        <form id="email-signup-form" name="embedded_signup" method="POST" action="">
+		        	<input data-id="ca:input" type="hidden" name="ca" value="e0680c94-d2e3-4e0f-a06e-8f5c6d18dff7">
+		            <input data-id="list:input" type="hidden" name="list" value="9">
+		            <input data-id="source:input" type="hidden" name="source" value="EFD">
+		            <input data-id="url:input" type="hidden" name="url" value="">
+
+		            <div class="field-group">
+		            	<label for="signup-first-name" class="u-sr-only">First Name</label>
+		            	<div class="field">
+		            		<input id="signup-first-name" name="first_name" type="text" placeholder="First Name...">
+		            	</div>
+		            </div>
+		            <div class="field-group">
+		            	<label for="signup-last-name" class="u-sr-only">Last Name</label>
+		            	<div class="field">
+		            		<input id="signup-last-name" name="last_name" type="text" placeholder="Last Name...">
+		            	</div>
+		            </div>
+		            <div class="field-group">
+		            	<label for="signup-email" class="u-sr-only">Email Address</label>
+		            	<div class="field">
+		            		<input id="signup-email" name="email" type="email" placeholder="Email...">
+		            	</div>
+		            </div>
+		            <div class="field-group">
+		            	<div class="field">
+		            		<button class="button">Submit</button>
+		            	</div>
+		            </div>
+		        </form>
+		        <p class="signup-success u-hidden">Success!  Thanks for signing up!</p>
+		    </div>
+		</section>
+
+		{% set formJs %}
+			function resetEmailForm() {
+			    $("#signup-first-name").val("");
+			    $("#signup-last-name").val("");
+			    $("#signup-email").val("");
+			}
+
+			$(document).ready(function(){
+
+			  /*
+			   * Send the form
+			   */
+			    $("#email-signup-form").on('submit', function(e){
+
+			        e.preventDefault();
+
+			        // set variables
+			        var validated       = true,
+			            hidden_ca       = $("input[name=ca]").val(),
+			            hidden_list     = $("input[name=list]").val(),
+			            hidden_source   = $("input[name=source]").val(),
+			            hidden_url      = $("input[name=url]").val(),
+			            first_name      = $("#signup-first-name").val(),
+			            last_name       = $("#signup-last-name").val(),
+			            email           = $("#signup-email").val();
+
+
+			        // simple validation
+			        if ( first_name === "" ) {
+			            validated = false;
+			            $("#signup-first-name").parent().addClass("error");
+			        } else {
+			            $("#signup-first-name").parent().removeClass("error");
+			        }
+
+			        if ( last_name === "" ) {
+			            validated = false;
+			            $("#signup-last-name").parent().addClass("error");
+			        } else {
+			            $("#signup-last-name").parent().removeClass("error");
+			        }
+
+			        // Validate Email against Regex.
+			        var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+			        if ( email !== "" && re.exec(email) === null ) {
+			            validated = false;
+			            $("#signup-email").parent().addClass("error");
+			        } else {
+			            $("#signup-email").parent().removeClass("error");
+			        }
+
+			        if ( email === "" ) {
+			            validated = false;
+			            $("#signup-email").parent().addClass("error");
+			        } else {
+			            $("#signup-email").parent().removeClass("error");
+			        }
+
+
+			        if (!validated) {
+			            return false;
+
+			        } else {
+
+			            // call the form
+			            $.ajax({
+			                type: "POST",
+			                url: "https://visitor2.constantcontact.com/api/signup",
+
+			                // send variables
+			                data: {
+			                	ca: 		hidden_ca,
+			                	list: 		hidden_list,
+			                	source: 	hidden_source,
+			                	url: 		hidden_url,
+			                    first_name: first_name,
+			                    last_name:  last_name,
+			                    email:      email
+			                },
+
+			                // get info back
+			                success: function(result){
+								var response = JSON.stringify(result);
+			                    var obj = jQuery.parseJSON(response);
+
+			                    if (obj.success === true || obj.status === "success") {
+			                        console.dir(obj);
+			                        $('.signup-success').removeClass('u-hidden');
+			                        resetEmailForm();
+			                    } else {
+			                        console.dir(obj);
+			                    }
+			                },
+
+			                error: function(result) {
+								var response = JSON.stringify(result);
+			                    var obj = jQuery.parseJSON(response);
+
+			                    console.dir(obj);
+			                },
+
+			                beforeSend:function(){
+			                    //
+			                },
+			                complete:function(){
+			                    //
+			                }
+
+			            });
+
+			        }
+
+			        return false;
+
+			    });
+
+			});
+
+		{% endset %}
+
+		{% includeJs formJs %}
+
+
+
+
+		<section class="impressum">
+		    <div class="l-container l-container--17">
+		        <div class="impressum__logos">
+				{% for link in navPartners.linksList.level(1) %}
+		            <a href="{{ link.websiteUrl }}" title="{{ link.label }}"><img src="{{ link.image.first().getUrl }}" alt="{{ link.image.first().title }} Logo"></a>
+		        {% endfor %}
+		        </div>
+
+
+		        <div class="impressum__text">
+		            <p>The Council on Accreditation (COA), a national accrediting entity designated by the US Department of State to provide Hague Accreditation and Approval, invites the public to provide comment on intercountry adoption service providers seeking Hague Accreditation, Approval or Renewal. You are invited to provide comments or complaints through <a href="http://coanet.org/accreditation/report-a-concern/">COA’s website</a></p>
+		        </div>
+		    </div>
+		</section>
+	{%- endblock %}
+
+{% endblock %}

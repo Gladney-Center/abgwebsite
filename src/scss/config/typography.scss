@@ -1,0 +1,39 @@
+$font1: "Gotham A", "Gotham B","Helvetica Neue",Helvetica,Arial,sans-serif;
+$font2: "nimbus-sans-condensed",Helvetica,Arial,sans-serif;
+$font3: "adobe-caslon-pro","Hoefler Text",Georgia,Garamond,Times,serif;
+
+$base-font-family: $font1;
+$heading-font-family: $font2;
+
+$base-font-size: 18px;
+$base-line-height: 1.8;
+$heading-line-height: 1.55;
+
+$em-base: $base-font-size;
+
+/**
+Weights reference
+
+Nimbus
+------
+
+Bold:      700
+
+
+Gotham - no italics
+-------------------
+
+Regular:   400
+Medium:    500
+Bold:      700
+
+
+Caslon - italics only
+---------------------
+
+Regular:   400
+Semibold:  600
+Bold:      700
+*/
+
+/* Nimbus */

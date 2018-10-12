@@ -1,0 +1,14 @@
+{% extends '_layouts/base' %}
+
+{% if bodyClass is not defined %}
+	{% set bodyClass = entry is defined ? 'body--' ~ entry.section.handle : 'body--' ~ craft.request.firstSegment %}
+{% endif %}
+
+
+{% block body %}
+
+	<main class="main style-guide">
+		{% block main %}{% endblock %}
+	</main>
+
+{% endblock %}

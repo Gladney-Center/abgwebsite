@@ -1,0 +1,263 @@
+/* nav */.site-nav {
+    margin-left: auto;
+
+    @include mq($until: site-nav) {
+        background: palette(branding, navy);
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        padding: 1.75rem 1rem 2rem 1rem;
+        pointer-events: none;
+        position: fixed;
+        right: 0;
+        top: 15vh;
+        transition: opacity 250ms ease;
+        z-index: index($layers, nav);
+
+        .site-nav-is-open & {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    @include mq( $from: 700px, $until: site-nav ) {
+        display: flex;
+    }
+
+
+    &__primary {
+        flex: 0 1 50%;
+        margin-bottom: 0;
+
+        > li {
+
+            > a {
+                color: palette(branding, navy);
+                display: block;
+                font-size: rem(14px);
+                font-weight: 700;
+                text-transform: uppercase;
+
+                .wf-nimbussanscondensed-n7-active & {
+                    @include smoothing(false);
+                    font-family: $font2;
+                    font-size: 30px;
+
+                    @include mq(site-nav) {
+                        font-size: rem(26px);
+                    }
+                }
+            }
+        }
+
+        @include mq($until: site-nav) {
+            margin-bottom: 1.5rem;
+
+            > li {
+
+                > a {
+                    &:link,
+                    &:visited {
+                        color: #fff;
+                    }
+
+                    &:focus,
+                    &:hover,
+                    &.is-active {
+                        color: palette(branding, salmon);
+                    }
+                }
+            }
+        }
+
+        @include mq(site-nav) {
+            display: flex;
+            margin-top: 1rem;
+
+            > li {
+                margin-bottom: 0;
+
+                &:not(:last-child) {
+                    margin-right: 0.25rem;
+                }
+
+                > a {
+                    line-height: 1;
+                    padding: 1vh 0.75rem;
+
+                    &:link,
+                    &:visited {
+                        color: palette(branding, navy);
+                    }
+
+                    &:focus,
+                    &:hover,
+                    &.is-active {
+                        color: palette(branding, green);
+                    }
+
+                    &.is-active {
+                        border: 2px solid;
+                    }
+                }
+            }
+        }
+
+        .subnav-list {
+            display: none;
+            background-color: darken(palette(branding, navy), 5);
+            margin-top: 0.5em;
+            padding: 0.5rem 0;
+
+            @include mq($until: site-nav) {
+
+                &.is-active {
+                    display: block;
+                }
+            }
+
+            a {
+                @include smoothing(false);
+                color: lighten(palette(branding, navy), 40);
+                text-transform: uppercase;
+                font-size: 14px;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                display: block;
+                padding: 0.4rem 1rem;
+                line-height: 1.2;
+
+                &.is-active {
+                    color: #FFF;
+                }
+            }
+        }
+    }
+
+
+
+
+    &__secondary {
+        font-size: rem(14px);
+        font-weight: 500;
+        margin-bottom: 0;
+        -webkit-font-smoothing: antialiased;
+
+        @include mq($until: site-nav) {
+            margin-bottom: 5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(#fff, 0.3);
+
+            a {
+                display: inline-block;
+                padding-top: 0.25em;
+                padding-bottom: 0.25em;
+
+                &:link,
+                &:visited {
+                    color: #fff;
+                }
+
+                &:focus,
+                &:hover {
+                    color: palette(branding, salmon);
+                }
+            }
+        }
+
+        @include mq( $from: 700px, $until: site-nav ) {
+            border: none;
+            border-left: 1px solid rgba(#fff, 0.3);
+            margin-left: 2rem;
+            padding-left: 2rem;
+            padding-top: 0;
+        }
+
+        @include mq(site-nav) {
+            display: flex;
+            position: absolute;
+            top: 7px;
+            right: 1.75rem;
+
+
+
+            li {
+                margin-bottom: 0;
+
+                &:not(:last-child) {
+                    margin-right: 1.5rem;
+                }
+            }
+
+            a {
+                &:link,
+                &:visited {
+                    color: palette(branding, green);
+                }
+
+                &:focus,
+                &:hover {
+                    color: palette(branding, salmon);
+                }
+            }
+        }
+
+        @media screen and ( min-height: 600px ) {
+            top: 1.25vh;
+        }
+    }
+}
+
+
+
+a.site-nav-toggle {
+    display: none;
+
+    @include mq($until: site-nav) {
+        display: block;
+        width: 5rem;
+        margin-left: auto;
+        text-align: center;
+        z-index: 9999;
+        padding: 0.25rem 0 0.2rem;
+        background: palette(branding, navy);
+        color: #fff;
+        font-size: rem(16px);
+        transition: background-color 200ms ease;
+
+        @include mq(m) {
+            top: 3rem;
+            right: 1.5rem;
+        }
+
+        &:focus,
+        &:hover {
+            color: #fff;
+            background: palette(branding, salmon);
+        }
+
+        &::after {
+            content: "Menu";
+
+            .site-nav-is-open & {
+                content: "Close";
+            }
+        }
+
+        &::before {
+            content: url('/static/img/icons/nav-toggle-open.svg');
+            position: relative;
+            margin-right: 0.4em;
+            display: inline-block;
+            line-height: 10px;
+            vertical-align: -15%;
+
+            .site-nav-is-open & {
+                content: url('/static/img/icons/nav-toggle-close.svg');
+            }
+        }
+
+    }
+}

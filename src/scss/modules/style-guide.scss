@@ -1,0 +1,97 @@
+/**
+Styles specific to style guide section, not used on actual tempaltes
+*/
+.style-guide {
+
+    > h1 {
+        font-family: $font1;
+        text-transform: uppercase;
+        font-size: 18px;
+        @include tracking(80);
+        color: #CCC;
+        margin-left: 1rem;
+        margin-top: 8rem;
+        margin-bottom: 4rem;
+
+        &:first-of-type {
+            margin-top: 2rem;
+        }
+    }
+
+    &__grid {
+        .sg-full {
+            background: rgba(0,0,0, 0.07);
+            box-shadow: 0 4px 10px 0 rgba(0,0,0, 0.15);
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .l-grid {
+            background: rgba(red, 0.2);
+        }
+
+        .l-container {
+            background: rgba(green, 0.1);
+            padding-left: 10px;
+            padding-right: 10px;
+
+            @include mq(m) {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        .col {
+            background: rgba(yellow, 0.5);
+            min-height: 4rem;
+        }
+
+        .sg-three-cols {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+
+            .col {
+                @include grid-column(5);
+            }
+        }
+
+        .sg-two-cols {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+
+            .col {
+                @include grid-column(7.5);
+            }
+        }
+
+
+        .sg-fifteen-cols {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+
+            .col {
+                @include grid-column(1);
+            }
+        }
+
+
+        .l-container--17 {
+            max-width: $max-width--17;
+        }
+
+        .l-container--9 .l-grid .col {
+            @include grid-column(1, $grid--9);
+        }
+
+        .sg-seventeen-cols {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+
+           .col {
+               @include grid-column(1, $grid--17);
+           }
+        }
+    }
+
+}

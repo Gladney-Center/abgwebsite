@@ -1,0 +1,6 @@
+/**
+Use to convert character tracking values in Adobe CS to CSS letter-spacing
+*/
+@mixin tracking($tracking) {
+    letter-spacing: ($tracking/1000) * 1em;
+}

@@ -1,0 +1,125 @@
+/* footer */.site-footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: palette(branding, navy);
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+
+    @include mq(l) {
+       padding-top: 5rem;
+       padding-bottom: 5rem;
+    }
+
+
+    .l-wrapper {
+        position: relative;
+
+        > section {
+            &:last-child { margin-bottom: 0; }
+        }
+    }
+
+
+    &__title {
+        font-size: rem(14px);
+        color: palette(branding, green--l);
+        margin-bottom: 2rem;
+
+        a {
+            border-bottom: 1px solid transparent;
+            color: palette(branding, green--l);
+            transition: all 200ms ease;
+
+            &:hover {
+                border-color: #FFF;
+                color: #FFF;
+            }
+        }
+    }
+
+
+    &__links {
+        @include grid-column(15);
+        font-family: $font2;
+        font-size: rem(36px);
+        font-weight: 700;
+        color: palette(branding, navy);
+        text-transform: uppercase;
+        line-height: 1;
+
+        @include mq(1080px) {
+            @include grid-column(5);
+        }
+
+        ul {
+            margin-bottom: 2rem;
+        }
+
+        li {
+            margin-bottom: -0.35em;
+        }
+
+        a {
+            &:link,
+            &:visited {
+                color: #fff;
+            }
+
+            &:focus,
+            &:hover {
+                color: palette(branding, salmon);
+            }
+        }
+
+
+        .social-icons {
+            font-size: 0.75em;
+            padding-bottom: 2rem;
+
+            ul {
+                margin-bottom: 0;
+            }
+
+            @include mq( 1080px ) {
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+        }
+    }
+
+
+
+    &__events,
+    &__posts {
+        @include grid-column(15);
+
+        @include mq(720px) {
+            @include grid-column(7);
+        }
+        @include mq(1080px) {
+            @include grid-column(5);
+        }
+    }
+    &__events {
+
+        @include mq( $until: 719px ) {
+            margin-bottom: 2.5rem;
+        }
+    }
+
+
+    .article-snippet-list {
+        a {
+
+            &:link,
+            &:visited {
+                color: #fff;
+            }
+
+            &:focus,
+            &:hover {
+                color: palette(branding, salmon);
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+$palettes: (
+	base: (
+		body: 			#fff,
+		font: 			#262626,
+		font--d:        #000,
+		font--l:        #464648,
+		font--xl:       #6d6d6d,
+	),
+	branding: (
+		pri:			#36a97f,  // Green
+		sec:			#f3866b,  // Salmon
+		green:          #36a97f,
+		green--d:       #28795c,  // E.g. buttons on green background
+		green--xd:      #184837,
+		green--l:       #72c4af,  // Use instead of primary green when on dark bg
+		salmon:         #f3866b,
+		salmon--d:      #c2573d,  // E.g. buttons on salmon background
+		salmon--xd:     #733425,
+		navy:           #174053,
+		teal:           #36a8b3,
+		blue--l: 		#1399a6,
+	),
+	ui: (
+		grey:           #E1E1E1, // Borders
+		grey--l:        #CCCCCC, // Light borders
+		grey--xl:       #FCFCFC, // Backgrounds
+	),
+	status: (
+		error:			#ff0000,
+		success:		#00ff00,
+	),
+	socialnetworks: (
+		email:			#555555,
+		twitter:		#1da1f2,
+		facebook:		#3b5998,
+		instagram:		#e4405f,
+		pinterest:		#bd081c,
+		googleplus:		#dc4e41,
+	),
+);

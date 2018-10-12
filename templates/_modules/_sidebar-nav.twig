@@ -1,0 +1,30 @@
+{% set segments = craft.request.getSegments() %}
+{% set len = segments | length %}
+{% set activeSlug = segments[len - 1] %}
+
+{% if entry.parent == 'Adoption Training & Education' %}
+    {% set startNode = entry %}
+{% else %}
+    {% set startNode = entry.parent %}
+{% endif %}
+
+
+
+<div class="level-3-nav l-container l-container--9">
+    <nav>
+        <ul>
+            {% if segments[0] == 'resources' and segments[2] != 'adoption-outreach' %}
+                {% set overviewPage = craft.entries.section('resources').slug(segments[2]).first() %}
+                <li>
+                    <a{% if activeSlug == segments[2] %} class="is-active"{% endif %} href="{{ overviewPage.url }}">{{ overviewPage.title }}</a>
+                </li>
+            {% endif %}
+
+            {% nav node in startNode.getDescendants(1) %}
+                <li>
+                    <a{% if node.slug == activeSlug %} class="is-active"{% endif %} href="{{ node.url }}">{{ node.title }}</a>
+                </li>
+            {% endnav %}
+        </ul>
+    </nav>
+</div>

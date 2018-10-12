@@ -1,0 +1,96 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <div class="banner contact u-flush--bottom">
+        <h1 class="u-sr-only">{{ entry.title }}</h1>
+    </div>
+
+    <section class="contact-card">
+        <div class="contact-card__intro">
+            <p class="lede">{{ entry.textArea | widont | raw }}</p>
+        </div>
+
+        <div class="contact-card__logo">
+            <img src="/static/img/branding/gladney-logo-white.svg" alt="{{ siteName }} logo">
+        </div>
+
+        <div class="contact-card__address">
+            <strong>Gladney Center for&nbsp;Adoption</strong>
+            <p>
+                6300 John Ryan Drive<br>
+                Fort Worth, Texas 76132-4122<br>
+                <a href="tel:8179226000">817-922-6000</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="l-container u-push--bottom--6">
+        <h2 class="underline-title"><span>Our Regional Offices</span></h2>
+        <p>Although based in Fort Worth, Texas, Gladney reaches many prospective clients through several regional offices. The offices are located in Amarillo, Austin, Houston, Lubbock and Midland, Texas; Brandon, Florida; Greenville, North Carolina; Oklahoma City, Oklahoma; New York, NY. Gladney also has a nationwide network of parent support groups who work year-round, serving three roles: to educate the general public about the merits of adoption, to support one another through the adoption process and beyond and to raise funds that help sustain Gladney programs.</p>
+        <ul class="address-list l-grid l-grid--3-col">
+
+            <li>
+                <h3>Fort Worth Adoption Office</h3>
+                <p class="u-text-s"><span class="group">{{ generalInfo.address.street }}{% if generalInfo.address.street2 is not empty %} {{ generalInfo.address.street2 }}{% endif %}</span> <span class="group">{{ generalInfo.address.city }}, {{ generalInfo.address.region }} {{ generalInfo.address.postalCode }}</span>
+                <a class="plain-link" href="tel:+1{{ generalInfo.phone | replace({'-': ''}) }}">{{ generalInfo.phone }}</a></p>
+            </li>
+
+            {% for office in craft.entries.section('regionalOffices').order('title asc') %}
+            <li>
+                <h3 class="u-flush--bottom">{{ office.title }}</h3>
+                <p class="u-text-s">{% if office.address.street is not empty %}<span class="group">{{ office.address.street }}{% if office.address.street2 is not empty %} {{ office.address.street2 }}{% endif %}</span> {% endif %}<span class="group">{{ office.address.city }}, {{ office.address.region }} {{ office.address.postalCode }}</span>
+                <a class="plain-link" href="tel:+1{{ office.phone | replace({'-': ''}) }}">{{ office.phone }}</a></p>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </section>
+
+    <section class="quick-contact select--salmon">
+        <div class="l-container">
+            <h3 class="quick-contact__title">Quick Contact</h3>
+
+            {# CRAFT CONTACT FORM #}
+            {# {{ craft.amForms.displayForm('contact') }} #}
+
+            {# HUBSPOT FORM FROM GLADNEY #}
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: '4002831',
+                    formId: '272cc120-f914-409a-813a-87e463ee5890',
+                    css: '',
+                    cssRequired: '',
+                    cssClass: '',
+                    onFormReady: function($form) {
+                        $('.hs-form fieldset > div').unwrap();
+                        $('.hs-form-radio-display').addClass('control radio');
+                        $('<span class="control-indicator"></span>').insertAfter('.hs-form-radio-display .hs-input');
+                        $('.hs-form select').parent().addClass('select');
+                        $('.hs_tell_us_about_yourself select').change(function() {
+                            $('.hs-form select').parent().addClass('select');
+                        });
+                    },
+                });
+            </script>
+
+        </div>
+    </section>
+
+{% endblock %}

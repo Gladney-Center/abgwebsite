@@ -1,0 +1,32 @@
+/* Must be within .l-container--17 wide container */
+
+.l-grid.l-left-sidebar {
+
+    > .left {
+        @include grid-column(17, $grid--17);
+        margin-bottom: 3rem;
+
+        @include mq(l) {
+            @include grid-column(7, $grid--17);
+        }
+
+        @include mq(xl) {
+            @include grid-column(6, $grid--17);
+            // margin-left: -1*$col-width-pc;
+        }
+    }
+
+    > .right {
+        @include grid-column(17, $grid--17);
+
+        @include mq(l) {
+            @include grid-column(9, $grid--17);
+            @include grid-push(1, $grid--17);
+        }
+
+        @include mq(xl) {
+            @include grid-column(10, $grid--17);
+            @include grid-push(1, $grid--17);
+        }
+    }
+}

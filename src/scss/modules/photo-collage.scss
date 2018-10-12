@@ -1,0 +1,189 @@
+.photo-collage {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    background-color: #f3f3f3;
+    background-image: url('/static/img/flowers-6.png');
+    background-position: right  top;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    /* Pull background outside container */
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    @include mq(m) {
+        margin-left: -50px;
+        margin-right: -50px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+
+    &__wrapper {
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+            max-width: 650px;
+        }
+
+        @include mq(1340px) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+
+    &__heading {
+        font-size: rem(36px);
+        line-height: 1;
+        color: palette(branding, green--l);
+        max-width: 7em;
+
+        @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+            position: relative;
+            top: 6rem;
+        }
+    }
+
+
+    &__list {
+        @include clearfix();
+
+        @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+            margin-top: -4rem;
+        }
+
+
+        li {
+            position: relative;
+            display: block;
+            clear: both;
+            width: 75%;
+            margin-bottom: -15%;
+            transition: box-shadow 0.3s ease;
+
+            @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+                width: 60%;
+                margin-bottom: -35%;
+            }
+
+            &:nth-child(1) { z-index: index($layers, collage-1); }
+            &:nth-child(2) { z-index: index($layers, collage-2); }
+            &:nth-child(3) { z-index: index($layers, collage-3); }
+            &:last-child { margin-bottom: 0; }
+
+            &:nth-child(even) {
+                float: right;
+                margin-bottom: -15%;
+
+                @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+                    float: none;
+                }
+            }
+
+            &:nth-child(odd) {
+                @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+                    float: right;
+                }
+            }
+
+            &:last-child {
+                @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+                    margin-right: 10%;
+                }
+            }
+
+
+            a {
+                display: block;
+            }
+
+
+            img {
+                display: block;
+                line-height: 0;
+                width: 100%;
+                height: auto;
+                filter: grayscale(100%);
+                transition: all 0.3s ease;
+            }
+
+
+            span {
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                right: 1rem;
+                bottom: 10%;
+                width: 140px;
+                height: 140px;
+                padding: 1rem;
+                border-radius: 140px;
+                background-color: palette(branding, salmon);
+                text-align: center;
+                font-size: rem(26px);
+                font-family: $font2;
+                line-height: 1;
+                text-transform: uppercase;
+                color: #fff;
+                -webkit-font-smoothing: antialiased;
+                transition: all 0.3s 0.01s ease;
+
+                @include mq(500px) {
+                    right: -1.5rem;
+                    bottom: 15%;
+                }
+
+                @include mq(1000px) {
+                    width: 164px;
+                    height: 164px;
+                    padding: 1.5rem;
+                    border-radius: 164px;
+                    font-size: rem(28px);
+                }
+
+                @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+                    right: auto;
+                    left: -1.5rem;
+                    bottom: 10%;
+                }
+            }
+
+
+            &:nth-child(odd) span {
+                right: auto;
+                left: 1rem;
+
+                @include mq(500px) {
+                    left: -1.5rem;
+                }
+
+                @media (min-width: 700px) and (max-width: 900px), (min-width: 1340px) {
+                    left: auto;
+                    right: -1.5rem;
+                }
+            }
+
+
+            &:focus,
+            &:hover {
+                box-shadow: 0px 10px 40px 10px rgba(0,0,0, 0.2);
+                z-index: index($layers, collage-4);
+
+                img {
+                    filter: grayscale(0);
+                }
+
+                span {
+                    background-color: palette(branding, navy);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{% set bgLg = {
+    width: 1600,
+    mode: 'fit'
+} %}
+{% set bgSm = {
+    width: 800,
+    mode: 'fit'
+} %}
+
+{% if entry.type == 'subpage' and entry.parent.image | length %}
+    {% set imgAsset = entry.parent.image.first() %}
+{% elseif entry.type != 'subpage' and entry.image | length %}
+    {% set imgAsset = entry.image.first() %}
+{% endif %}
+
+{% if imgAsset is defined %}
+    {% set headerLg = imgAsset.getUrl(bgLg) %}
+    {% set headerSm = imgAsset.getUrl(bgSm) %}
+{% else %}
+    {% set headerLg = '/static/img/hero/hero-1.jpg' %}
+    {% set headerSm = '/static/img/hero/hero-1.jpg' %}
+{% endif %}
+
+{% if imgAsset is defined %}
+  {% set bgCss %}
+      .banner {
+          background-image: url('{{ headerSm }}');
+          background-position: {{ imgAsset.focusPctX }}% {{ imgAsset.focusPctY }}%;
+      }
+      @media screen and ( min-width: 740px ) {
+          .banner {
+              background-image: url('{{ headerLg }}');
+          }
+      }
+  {% endset %}
+  {% includeCss bgCss %}
+{% endif %}
+

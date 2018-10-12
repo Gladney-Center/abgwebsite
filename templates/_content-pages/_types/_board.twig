@@ -1,0 +1,53 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+
+{% set officers = [] %}
+{% set members = [] %}
+{% set board = entry.boardMembers %}
+{% for member in board %}
+    {% if member.isOfficer | length %}
+        {% set officers = officers | merge([member]) %}
+    {% else %}
+        {% set members = members | merge([member]) %}
+    {% endif %}
+{% endfor %}
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <header class="banner banner--text-bottom short">
+        <h1 class="banner__heading">{{ heading }}</h1>
+    </header>
+
+    <div class="l-container">
+    <div class="l-grid board-members">
+        <section class="board-members__officers">
+            <h2 class="board-members__title">{{ entry.subheading }}</h2>
+            <ul>
+                {% for officer in officers %}
+                <li>{{ officer.firstName }} {{ officer.lastName }}, <em>{{ officer.officerTitle }}</em></li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="board-members__members">
+            <h2 class="board-members__title">Members</h2>
+            <ul>
+                {% for member in members | sort %}
+                <li>{{ member.firstName }} {{ member.lastName }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</div>
+
+{% endblock %}

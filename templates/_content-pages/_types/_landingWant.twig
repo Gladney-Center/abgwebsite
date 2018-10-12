@@ -1,0 +1,29 @@
+{% extends '_layouts/site' %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = entry.title %}
+{% endif %}
+
+{% block main %}
+
+    {% include '_includes/_make-banner' %}
+
+    <header class="banner banner--with-cta">
+        <h1 class="u-sr-only">{{ heading }}</h1>
+        <p class="cta">
+            What kind of adoption is right <em>for&nbsp;me?</em>
+        </p>
+        <a href="#wizard" class="button button--xl button--outline js-wizard-modal-trigger">Let&rsquo;s Find Out</a>
+    </header>
+
+    {% include '_modules/_content-blocks' %}
+
+{% endblock %}
+
+{% block footerJs %}
+
+    {% include '_modules/_wizard' %}
+
+{% endblock %}

@@ -1,0 +1,59 @@
+$max-width: 1180px; // standard 15 col
+
+$max-width--17: 1340px; // wider 17 col
+
+$max-width--13: 1040px; // infrequently used
+
+$max-width--11: 880px; // infrequently used
+
+$max-width--9: 740px; // narrow 9 col
+
+$col-width: 60px;
+
+$col-width-pc: 6.667%;
+
+$gutter: 20px;
+
+
+/**
+Standard 15 column grid
+*/
+$neat-grid: (
+  columns: 15,
+  gutter: $gutter,
+);
+
+
+/**
+A wider grid with two extra columns.
+Only use within a .l-container--17 container
+*/
+$grid--17: (
+  columns: 17,
+  gutter: $gutter,
+);
+
+
+/**
+A narrow grid mad up of 9 standard columns
+Only use within a .l-container--9 container
+*/
+$grid--9: (
+  columns: 9,
+  gutter: $gutter,
+);
+
+
+/**
+Additional grids used infrequently
+*/
+$grid--11: (
+  columns: 11,
+  gutter: $gutter,
+);
+
+
+$grid--13: (
+  columns: 11,
+  gutter: $gutter,
+);

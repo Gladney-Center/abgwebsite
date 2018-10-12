@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280px" height="24px" viewBox="0 0 1280 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>multi-border</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="multi-border" fill-rule="nonzero">
+            <rect id="Rectangle-path" fill="#67C6B8" x="731.4" y="0" width="182.9" height="23.5"></rect>
+            <rect id="Rectangle-path" fill="#2EB16B" x="182.9" y="0" width="182.9" height="23.5"></rect>
+            <rect id="Rectangle-path" fill="#B0DA5B" x="365.7" y="0" width="182.9" height="23.5"></rect>
+            <rect id="Rectangle-path" fill="#007573" x="548.6" y="0" width="182.9" height="23.5"></rect>
+            <rect id="Rectangle-path" fill="#C8F1BC" x="0" y="0" width="182.9" height="23.5"></rect>
+            <rect id="Rectangle-path" fill="#153F54" x="914.3" y="0" width="182.9" height="23.5"></rect>
+            <rect id="Rectangle-path" fill="#F58B65" x="1097.1" y="0" width="182.9" height="23.5"></rect>
+        </g>
+    </g>
+</svg>

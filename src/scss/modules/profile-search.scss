@@ -1,0 +1,181 @@
+/* section */.profile-search {
+    padding: 0 1.5rem;
+    background-color: palette(branding, green);
+    text-align: center;
+    color: palette(branding, green--xd);
+    -webkit-font-smoothing: antialiased;
+    font-size: rem(16px);
+
+
+    &__title {
+        display: block;
+        margin: 0 -1.5rem;
+        padding: 0.5rem 0;
+        background-color: palette(branding, green--d);
+        font-family: $font2;
+        text-transform: uppercase;
+        font-size: rem(48px);
+        line-height: 1;
+        color: #FFF;
+
+
+        /* Title and toggle link for small screens */
+        .small {
+            display: block;
+
+            &:link,
+            &:visited {
+                color: #fff;
+            }
+
+            &:focus,
+            &:hover {
+                color: #fff;
+            }
+
+            @include mq(l) {
+                display: none;
+            }
+        }
+
+
+        /* Title for big screens */
+        .big {
+            display: none;
+
+            @include mq(l) {
+                display: block;
+            }
+        }
+    }
+
+
+    form {
+        margin-top: 1.5rem;
+        padding-bottom: 1rem;
+
+        /* Show/hide */
+        @include mq($until: l) {
+            display: none;
+
+            &.is-open {
+                display: block;
+            }
+        }
+
+        .form-fields {
+            margin-bottom: 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        .select {
+            width: 100%;
+        }
+
+        .cols-2 {
+            @include mq(400px) {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            > * {
+                display: block;
+                width: calc(50% - 0.5rem);
+            }
+
+            input {
+                margin-bottom: 1rem;
+
+                @include mq(400px) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        label,
+        legend {
+            color: palette(branding, green--xd);
+            font-weight: 500;
+            margin-bottom: 0.25em;
+        }
+
+        #{$all-text-inputs} {
+            border-color: palette(branding, green--d);
+        }
+
+        .button {
+            background-color: palette(branding, green--d);
+
+            &:focus,
+            &:hover {
+                background-color: palette(branding, salmon);
+            }
+        }
+
+        fieldset {
+            display: block;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .age-range {
+        margin-bottom: 2rem;
+    }
+
+
+
+
+    /**
+    Style checkbox filters
+    Based on WTF Forms – https://github.com/mdo/wtf-forms
+    */
+    .control {
+        position: relative;
+        display: inline-block;
+        padding: 0.75em;
+        color: #FFF;
+        cursor: pointer;
+        background-color: palette(branding, green--d);
+        border-radius: 3px;
+        margin-bottom: 0.75rem;
+    }
+    .control input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1; /* Put the input behind the label so it doesn't overlay text */
+    }
+
+    .control strong {
+        font-weight: 400;
+        position: relative;
+        z-index: 2;
+        color: #fff;
+    }
+
+    .control-indicator {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        border-radius: 3px;
+    }
+
+    /* Checked state */
+    .control input:checked ~ .control-indicator {
+        background-color: palette(branding, green--xd);
+    }
+
+    /* Active */
+    .control input:active ~ .control-indicator {
+        background-color: darken(palette(branding, green--xd), 10)
+    }
+}

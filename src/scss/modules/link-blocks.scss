@@ -1,0 +1,78 @@
+.link-blocks {
+  position: relative;
+  overflow: visible;
+  max-width: 600px;
+  margin: 5rem auto 0;
+  padding-bottom: 5rem;
+
+  @include mq($max-width) {
+    max-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+
+  &__block {
+    padding: 2rem;
+    padding: 2rem 2em 10em;
+    position: relative;
+    color: rgba(#fff, 0.9);
+    z-index: 1;
+
+    &:nth-child(1) {
+      background-color: palette(branding, salmon);
+    }
+    &:nth-child(2) {
+      background-color: palette(branding, green--l);
+    }
+
+
+    @include mq(500px) {
+      padding: 3rem 3em 8em;
+    }
+
+    @include mq($max-width) {
+      width: calc(50% - 0.25rem);
+      min-height: 30rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    bottom: 2em;
+    right: 3em;
+
+    svg path {
+      fill: rgba(#000, .1);
+    }
+  }
+
+  &__heading {
+    padding-right: 10%;
+
+    h2 {
+      color: #fff;
+      font-size: 2.4em;
+      line-height: 1.1em;
+    }
+  }
+
+  &__content {
+    text-transform: uppercase;
+    position: relative;
+
+    li {
+      margin-bottom: 1em;
+    }
+
+    a {
+      border-bottom: 2px solid rgba(#fff, .6);
+      color: #fff;
+    }
+
+
+  }
+
+}

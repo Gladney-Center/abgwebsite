@@ -1,0 +1,26 @@
+<div class="link-blocks">
+  {% for block in blocks %}
+    <aside class="link-blocks__block">
+      <div class="link-blocks__img">
+        {% switch loop.index %}
+          {% case 1 %}
+            {% set icon = "building" %}
+          {% case 2 %}
+            {% set icon = "megaphone" %}
+        {% endswitch %}
+
+        {{ craft.inlin.er('/static/img/' ~ icon ~ '.svg') | raw }}
+      </div>
+      <div class="link-blocks__heading">
+        <h2>{{ block.heading }}</h2>
+      </div>
+      <div class="link-blocks__content">
+        <ul>
+          {% for item in block.links %}
+            <li><a target="_blank" href="{{ item.linkurl }}">{{ item.text }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </aside>
+  {% endfor %}
+</div>

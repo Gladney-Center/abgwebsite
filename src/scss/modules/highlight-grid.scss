@@ -1,0 +1,199 @@
+.highlight-grid {
+    position: relative;
+    overflow: visible;
+    max-width: 600px;
+    margin: 0 auto 5rem;
+
+    @include mq($max-width) {
+        max-width: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+
+    &__item {
+        padding: 2rem 1.5rem;
+        position: relative;
+        color: rgba(#fff, 0.9);
+        z-index: 1;
+
+        @include mq(500px) {
+            padding: 3rem 2rem;
+        }
+
+        @include mq($max-width) {
+            width: calc(50% - 0.25rem);
+            min-height: 30rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+
+    &__title {
+        color: rgba(#fff, 0.9);
+        font-family: $font1;
+        font-style: normal;
+        margin-bottom: 1.5rem;
+        font-size: rem(16px);
+        @include tracking(100);
+        font-weight: 700;
+        text-transform: uppercase;
+
+        @include mq(500px) {
+            font-size: rem(22px);
+            margin-bottom: 3rem;
+        }
+    }
+
+
+    &__item--logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url('/static/img/highlight-grid-logo-bg.jpg');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        img {
+            width: 50%;
+            height: auto;
+        }
+    }
+
+
+    &__item--mission {
+        background-color: palette(branding, navy);
+
+        p {
+            font-family: $font3;
+            font-style: italic;
+            font-size: rem(40px);
+            line-height: 1.05;
+            margin-bottom: 0;
+
+            @include mq(500px) {
+               font-size: rem(70px);
+            }
+        }
+    }
+
+
+    &__item--numbers {
+        background: linear-gradient(to bottom, #f18469 0%, #c75b40 100%);
+        text-align: center;
+
+        p {
+            margin: 0 auto;
+            max-width: 16em;
+            font-size: rem(18px);
+            @include tracking(100);
+            font-weight: 500;
+            text-transform: uppercase;
+
+            @include mq(500px) {
+                font-size: rem(22px);
+            }
+        }
+
+        strong {
+            display: block;
+            margin-bottom: 2.5rem;
+            font-size: rem(130px);
+            line-height: 0.8;
+            font-weight: 400;
+
+            @include mq(500px) {
+                font-size: rem(229px);
+            }
+        }
+    }
+
+
+    &__item--vision {
+        background-color: palette(branding, green--l);
+
+        p {
+            font-family: $font3;
+            font-style: italic;
+            font-size: rem(24px);
+            line-height: 1.5;
+            margin-bottom: 0;
+
+            @include mq(500px) {
+               font-size: rem(40px);
+            }
+        }
+    }
+
+
+    /* Flowers */
+    &::after {
+        content: url('/static/img/flowers-1.png');
+        display: block;
+        position: absolute;
+        right: 51%;
+        top: 50%;
+        z-index: 0;
+
+        @include mq($max-width) {
+            top: 27%;
+        }
+    }
+
+
+    &::before {
+        content: url('/static/img/flowers-2.png');
+        display: block;
+        position: absolute;
+        left: 46%;
+        bottom: 50%;
+        z-index: 0;
+
+        @include mq($max-width) {
+            bottom: 10%;
+        }
+    }
+
+
+    &__flowers {
+        display: none;
+
+        @include mq($max-width) {
+            display: block;
+            position: absolute;
+            z-index: 2;
+        }
+
+        &--3 {
+            width: 176px;
+            height: 245px;
+            background: url('/static/img/flowers-3.png') 0 0 no-repeat;
+            right: 50%;
+            top: 59%;
+            margin-right: 464px;
+            margin-top: 235px;
+        }
+
+        &--4 {
+            width: 137px;
+            height: 101px;
+            background: url('/static/img/flowers-4.png') 0 0 no-repeat;
+            right: 50%;
+            top: 50%;
+            margin-top: -112px;
+            margin-right: -28px;
+        }
+
+        &--5 {
+            width: 82px;
+            height: 350px;
+            background: url('/static/img/flowers-5.png') 0 0 no-repeat;
+            left: 50%;
+            top: 50%;
+            margin-top: -386px;
+            margin-left: 512px;
+        }
+    }
+}

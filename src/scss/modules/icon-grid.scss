@@ -1,0 +1,52 @@
+.icon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em;
+
+  @include mq(m) {
+    padding: 0 20%;
+  }
+  @include mq(l) {
+    padding: 0 2em;
+  }
+
+  span,
+  a {
+    background:palette(branding, teal);
+    display: flex;
+    width: 30%;
+    padding-bottom:30%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+    border-radius: 999px;
+    transition: background-color .2s ease;
+
+    @include mq(l) {
+      width: 45%;
+      padding-bottom: 45%;
+    }
+  }
+
+  a {
+    &:hover,
+    &:focus {
+      background: palette(branding, navy);
+    }
+  }
+
+
+  svg {
+    fill: #fff;
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 4.5em;
+    width: 4.5em;
+  }
+}

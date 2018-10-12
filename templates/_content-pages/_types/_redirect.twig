@@ -1,0 +1,9 @@
+{# The main nav _should_ direct the user to the linked page directly,
+but if the user enters the direct URL for this 'redirect' page,
+this will kick in to make sure they get there. #}
+
+{% if entry.linkedPage | length %}
+    {% redirect entry.linkedPage.first().uri 301 %}
+{% else %}
+    {% redirect entry.websiteUrl 301 %}
+{% endif %}

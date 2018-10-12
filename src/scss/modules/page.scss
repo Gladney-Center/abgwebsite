@@ -1,0 +1,193 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .l-container {
+        width: 100%;
+    }
+
+    &.success-story {
+
+        header {
+            padding-top: 3rem;
+
+            @include mq( 768px ) {
+                padding-top: 5rem;
+            }
+
+            h1 {
+                color: palette(branding, sec);
+                font-family: $font3;
+                font-feature-settings: "swsh";
+                font-size: 1.3333rem;
+                font-style: italic;
+                font-weight: 400;
+                line-height: 1.3;
+                margin-bottom: 0.5em;
+            }
+            h2 {
+                font-family: $font1;
+                font-size: 1.5555rem;
+                font-style: normal;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                line-height: 1;
+                margin-bottom: 1.5em;
+                text-transform: uppercase;
+            }
+        }
+
+        > .l-container {
+            max-width: 880px;
+        }
+
+        .has-image-float & {
+
+            .image-float-right {
+                display: block;
+                height: auto;
+                margin-bottom: 2rem;
+                transition: transform 0ms linear;
+                width: 100%;
+
+                @include mq( 500px ) {
+                    max-width: 40vw;
+                    margin-bottom: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: auto;
+
+                    &.stuck {
+                        position: fixed;
+                        transition: transform 350ms ease;
+                        z-index: 0;
+
+                        .header-pinned & {
+                            transform: translateY(calc(15vh + 50px));
+                        }
+                    }
+                }
+                @include mq( 768px ) {
+                    max-width: 30vw;
+                }
+            }
+
+            > .l-container {
+                max-width: 1180px;
+
+                @include mq( 500px ) {
+                    padding-right: calc(40vw + 1rem);
+                }
+                @include mq( 768px ) {
+                    padding-right: calc(30vw + 2rem);
+                }
+                @include mq( 1180px ) {
+                    padding-right: calc((30vw - ((100vw - 1180px) / 2)) + 5rem);
+                }
+            }
+        }
+    }
+
+    &.has-aside {
+
+        aside {
+            width: 100%;
+
+            @include mq( 992px ) {
+                max-width: 30vw;
+                margin-bottom: 0;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: auto;
+            }
+        }
+
+        > .l-container {
+
+            @include mq( 992px ) {
+                padding-left: calc(30vw + 2rem);
+            }
+            @include mq( 1180px ) {
+                padding-left: calc((30vw - ((100vw - 1180px) / 2)) + 5rem);
+            }
+        }
+    }
+
+    &.banner-overlap {
+        z-index: 1;
+
+        @include mq(m) {
+            margin-top: -12rem;
+        }
+
+        .level-3-nav {
+
+            nav {
+                top: 3rem;
+
+                @include mq( m ) {
+                    top: 12rem;
+                }
+            }
+        }
+
+        &--big {
+
+            @include mq( m ) {
+                margin-top: -17.75vw;
+            }
+            @include mq( 1180px ) {
+                margin-top: -13.75vw
+            }
+
+            .level-3-nav {
+
+                nav {
+
+                    @include mq( m ) {
+                        top: calc(17vw - 2.6666rem);
+                    }
+                    @include mq( 1180px ) {
+                        top: calc(14vw - 2.6666rem);
+                    }
+                }
+            }
+        }
+
+        .big-heading,
+        .wysiwyg:first-of-type {
+            background-color: #FFF;
+
+            @include mq( 840px ) {
+                max-width: 840px;
+                padding: 0 3.8888rem;
+            }
+        }
+        .wysiwyg:first-of-type {
+
+            @include mq( 740px ) {
+                padding-top: 3rem;
+            }
+        }
+        .big-heading + .wysiwyg {
+            padding-top: 0;
+        }
+    }
+
+    &:not(.banner-overlap) {
+
+        @include mq( $until: 739px ) {
+            // padding-top: 3rem;
+        }
+    }
+
+    .subnav + & {
+
+        @media screen and ( min-width: 1180px ) {
+            margin-top: 50px;
+        }
+    }
+}

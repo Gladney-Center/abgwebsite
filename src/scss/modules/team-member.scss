@@ -1,0 +1,96 @@
+.team-member {
+
+    @include mq($from: 500px, $until: 700px) {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &__photo {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+
+        @include mq($from: 500px, $until: 700px) {
+            width: 40%;
+        }
+    }
+
+
+    &__details {
+
+        @include mq($from: 500px, $until: 700px) {
+            padding-left: 1rem;
+        }
+    }
+
+
+    &__name {
+        font-family: $font1;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 1em;
+
+        @include mq( 700px ) {
+            font-size: rem(18px);
+        }
+    }
+
+
+    &__title {
+        margin-bottom: 0.8rem;
+        font-family: $font3;
+        font-size: 20px;
+        font-style: italic;
+        line-height: 1.25;
+
+        @include mq( 700px ) {
+            font-size: rem(24px);
+        }
+
+        em {
+            font-family: $font1;
+            font-size: rem(16px);
+            font-style: normal;
+        }
+    }
+
+
+    &__contacts {
+
+        a {
+            @include tracking(200);
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.75;
+            text-transform: uppercase;
+
+            @include mq( 700px ) {
+                font-size: rem(16px);
+            }
+
+            .icon {
+                position: relative;
+                top: 0.1em;
+            }
+
+            &:link,
+            &:visited {
+                color: palette(branding, navy);
+
+                .icon {
+                    fill: palette(branding, navy);
+                }
+            }
+
+            &:focus,
+            &:hover {
+                color: palette(branding, green);
+
+                .icon {
+                    fill: palette(branding, green);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,6 @@
+{% macro icon(icon, title, modifier ) %}
+	<svg class="icon icon-{{ icon }}{% if modifier is defined%} icon-{{ modifier }}{% endif %}">
+	{% if title is defined%}<title>{{ title }}</title>{% endif %}
+		<use xlink:href="/static/img/sprite/icons.svg#{{ icon }}" />
+	</svg>
+{% endmacro %}

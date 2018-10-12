@@ -1,0 +1,111 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+
+  {% include '_modules/_subnav' %}
+
+  {% if entry.heading is not empty %}
+      {% set heading = entry.heading %}
+  {% else %}
+      {% set heading = title %}
+  {% endif %}
+
+  {% include '_includes/_make-banner' %}
+  <header class="banner">
+    <h1 class="banner__heading">{{ heading }}</h1>
+  </header>
+
+
+  <section class="l-container l-container--16">
+    <div class="l-grid l-left-sidebar">
+
+
+      <div class="left">
+        {% set cat = craft.categories.slug('advocacy').first %}
+        {% set params = {
+          section: 'blog',
+          relatedTo: cat,
+          limit: 3
+        } %}
+        {% include '_modules/latest-posts' with {
+          title: 'Latest ' ~ cat.title ~ ' blog posts',
+          posts: craft.entries(params),
+          footer: {
+            text: 'Read more on our blog ' ~ svgSprite.icon('new-window'),
+            link: 'http://blog.adoptionsbygladney.com/tag/' ~ cat.slug,
+            target: ''
+          }
+        } %}
+      </div>
+
+      <div class="right">
+        {{ entry.body }}
+        {% include '_modules/sign-off-photo' with {
+          photo: entry.signOff.photo.first.url({width:200, height:200}),
+          signed: entry.signOff.signed,
+          img: entry.signOff.signature.first.url,
+          name: entry.signOff.signedName,
+          role: entry.signOff.role
+        } %}
+      </div>
+
+    </div>
+  </section>
+
+
+  {% include '_modules/hr' with {
+    width: 16,
+  } %}
+
+
+
+
+
+  <section class="l-container l-container--16">
+    <div class="l-grid l-icon-grid-body-inset">
+
+
+      {% if entry.instagramEmbedCode != "" %}
+
+        <div class="instagram-embed">
+          <header class="instagram-embed__heading">
+            <h3>{{ entry.takeAction.heading }}</h3>
+            <h4>{{ entry.takeAction.subheading }}</h4>
+          </header>
+          <div class="instagram-embed__iframe">
+            {{ entry.instagramEmbedCode|raw }}
+          </div>
+        </div>
+
+      {% else %}
+
+        <div class="left">
+          {% include '_modules/icon-grid' with { icons: entry.iconGrid } %}
+        </div>
+        <div class="right">
+          {% include '_modules/body-inset' with {
+            heading: entry.takeAction.heading,
+            subheading: entry.takeAction.subheading,
+            body: entry.takeAction.body,
+            footer: entry.takeAction.footer,
+            cta: entry.takeAction.button
+          } %}
+        </div>
+
+      {% endif %}
+
+    </div>
+  </section>
+
+
+  {% include '_modules/hr' with {
+    width: 16,
+  } %}
+
+
+  <div class="l-container l-container--13">
+    {% include '_modules/link-blocks' with { blocks: entry.linkBlocks } %}
+  </div>
+
+
+{% endblock %}

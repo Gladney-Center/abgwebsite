@@ -1,0 +1,349 @@
+{% if containerClass is not defined %}
+    {% set containerClass = 'l-container--11' %}
+{% endif %}
+
+
+{% for block in entry.contentBlocks.level(1) %}
+
+    {% if block.type.handle == 'richTextBlock' %}
+        {% if block.body is not empty %}
+            <section class="l-container {{ containerClass }} wysiwyg">
+                {{ block.body | widont }}
+            </section>
+        {% endif %}
+    {% endif %}
+
+
+    {% if block.type.handle == 'textWFloatingImage' %}
+        {% if block.body is not empty and block.image | length %}
+            {% set transform = {
+                width: 530,
+                height: 355,
+                mode: 'crop',
+            } %}
+            <section class="l-container {{ containerClass }} wysiwyg">
+                <img class="pull-content pull-content--{{ block.imageFloat }}" src="{{ block.image.first().getUrl( transform ) }}" alt="">
+                {{ block.body | widont }}
+            </section>
+        {% endif %}
+    {% endif %}
+
+
+    {% if block.type.handle == 'imageGallery' %}
+        {# block.lightswitch: true = Small Gallery, false = Large Gallery #}
+        {% if block.images | length %}
+
+            {% set bodyClass = 'butts' %}
+
+            {% spaceless %}
+            <section class="image-carousel js-image-carousel{% if block.lightswitch %} image-carousel--small{% endif %}">
+
+                {% for image in block.images %}
+
+                    {% if block.lightswitch %}
+                        {% set transform = {
+                            width: 320,
+                            height: 180,
+                            mode: 'crop',
+                        } %}
+                        {% set transformedImage %}
+                            <img src="{{ image.getUrl( transform ) }}">
+                        {% endset %}
+                    {% else %}
+                        {% set imageSet = craft.imager.transformImage(image,
+                            [
+                                { width: 1200 },
+                                { width: 600, jpegQuality: 65 },
+                                { width: 400, jpegQuality: 65 }
+                            ],
+                            { ratio: 16/9, position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%', jpegQuality: 80 },
+                            { fillTransforms: true }) %}
+                        {% set transformedImage %}
+                            <img src="{{ craft.imager.base64Pixel(16, 9) }}" sizes="60vw" srcset="{{ craft.imager.srcset(imageSet) }}">
+                        {% endset %}
+                    {% endif %}
+
+                    {{ transformedImage }}
+
+                {% endfor %}
+
+            </section>
+            {% endspaceless %}
+
+        {% endif %}
+    {% endif %}
+
+
+    {% if block.type.handle == 'ctaBucket' %}
+        {% if block.children | length %}
+            {% if block.image | length %}
+                {% set blockClass = 'cta-bucket--image' %}
+            {% elseif block.lightswitch %}
+                {% set blockClass = 'cta-bucket--shadow' %}
+            {% endif %}
+            {% if block.textArea is not empty %}
+                {% set textClass = 'has-text' %}
+            {% endif %}
+
+            {% if block.image | length %}
+                {% set bgLg = {
+                    width: 1600,
+                    height: 416,
+                    mode: 'crop',
+                } %}
+                {% set bgSm = {
+                    width: 800,
+                    height: 800,
+                    mode: 'crop',
+                } %}
+                {% set imgAsset = block.image.first() %}
+                {% set imgSlug = imgAsset.title | kebab %}
+                {% set params = { position: imgAsset.focusPctX ~ '% ' ~ imgAsset.focusPctY ~ '%' } %}
+                {% set images = craft.imager.transformImage(imgAsset, [bgLg, bgSm], params) %}
+
+                {% set imageCss %}
+                    .{{ imgSlug }} {
+                        background-image: url('{{ images[1].url }}');
+                    }
+                    @media screen and ( min-width: 740px ) {
+                        .{{ imgSlug }} {
+                            background-image: url('{{ images[0].url }}');
+                        }
+                    }
+                {% endset %}
+
+                {% includeCss imageCss %}
+            {% endif %}
+
+            <section class="cta-bucket {{ blockClass | default('') }} {{ textClass | default('') }} {{ imgSlug | default('') }}">
+                <div class="l-container">
+                    {% if block.textArea is not empty %}<p>{{ block.textArea | widont }}</p>{% endif %}
+
+                    {% for button in block.children %}
+                        {% if button.linkedPage | length %}
+                            {% set url = button.linkedPage.first().url %}
+                        {% elseif button.pdf | length %}
+                            {% set url = button.pdf.first().url %}
+                        {% else %}
+                            {% set url = button.websiteUrl %}
+                        {% endif %}
+                        <a href="{{ url | default('') }}" class="button button--xl button--outline">{{ button.label | widont }}</a>
+                    {% endfor %}
+
+                </div>
+            </section>
+        {% endif %}
+    {% endif %}
+
+
+    {% if block.type.handle == 'signposts' %}
+        {% if block.children | length %}
+            <section class="signposts">
+                {% set bgSm = {
+                    width: 760,
+                    height: 430,
+                    mode: 'crop',
+                } %}
+                {% set bgLg = {
+                    width: 1520,
+                    height: 430,
+                    mode: 'crop',
+                } %}
+
+                {% for box in block.children %}
+                    {% if box.linkedPage | length %}
+                        {% set url = box.linkedPage.first().url %}
+                    {% else %}
+                        {% set url = box.websiteUrl %}
+                    {% endif %}
+
+                    {% set imgAsset = box.image.first() %}
+                    {% set imgSlug = imgAsset.title | kebab %}
+                    {% set params = { position: imgAsset.focusPctX ~ '% ' ~ imgAsset.focusPctY ~ '%' } %}
+
+                    {% set len = block.children | length %}
+                    {% if len > 1 %}
+                        {% set images = craft.imager.transformImage(imgAsset, [bgSm], params) %}
+
+                        {% set imageCss %}
+                            .{{ imgSlug }} {
+                                background-image: url('{{ images[0].url }}');
+                            }
+                        {% endset %}
+
+                        {% includeCss imageCss %}
+
+                    {% else %}
+                        {% set images = craft.imager.transformImage(imgAsset, [bgLg, bgSm], params) %}
+
+                        {% set imageCss %}
+                            .{{ imgSlug }} {
+                                background-image: url('{{ images[1].url }}');
+                            }
+                            @media screen and ( min-width: 740px ) {
+                                .{{ imgSlug }} {
+                                    background-image: url('{{ images[0].url }}');
+                                }
+                            }
+                        {% endset %}
+
+                        {% includeCss imageCss %}
+
+                    {% endif %}
+
+                    {% if url is not empty %}
+
+                        <a href="{{ url }}" class="signposts__box {{ box.brandColorSelector }} {{ imgSlug }}">
+                            <div class="l-container">
+                                <h3 class="signposts__title">{{ box.heading }}</h3>
+                                <p class="signposts__content">
+                                    <span class="subtext">{{ box.textArea }}</span>
+                                    <span class="cta">{{ box.label }}</span>
+                                </p>
+                            </div>
+                        </a>
+
+                    {% else %}
+
+                        <div class="signposts__box {{ imgSlug }}"></div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </section>
+        {% endif %}
+    {% endif %}
+
+
+    {% if block.type.handle == 'heroVideo' %}
+        {% if block.videoEmbed | length %}
+            {% set bgLg = {
+                width: 1600,
+                height: 900,
+            } %}
+            {% set bgMd = {
+                width: 1100,
+                height: 620,
+            } %}
+            {% set bgSm = {
+                width: 800,
+                height: 934,
+            } %}
+            {% set video = craft.embedder.url(block.videoEmbed.first().videoUrl) %}
+            {% set slug = video.video_title | kebab %}
+
+            {% if block.videoEmbed.first().posterImage | length %}
+                {% set imgAsset = block.videoEmbed.first().posterImage.first() %}
+                {% set params = { position: imgAsset.focusPctX ~ '% ' ~ imgAsset.focusPctY ~ '%' } %}
+            {% else %}
+                {% set imgAsset = video.video_highres | replace({'_crop_resized': ''}) %}
+                {% set params = {} %}
+            {% endif %}
+
+            {% set posters = craft.imager.transformImage(imgAsset, [bgLg, bgMd, bgSm], params) %}
+
+            {% set posterCss %}
+                .{{ slug }} {
+                    background-image: url('{{ posters[2].url }}');
+                }
+                @media screen and ( min-width: 740px ) {
+                    .{{ slug }} {
+                        background-image: url('{{ posters[0].url }}');
+                    }
+                    .{{ slug }}.l-container {
+                        background-image: url('{{ posters[1].url }}');
+                    }
+                }
+            {% endset %}
+
+            {% includeCss posterCss %}
+
+            <section class="video-tease{% if block.lightswitch == 0 %} l-container{% endif %} {{ slug }}">
+                <a href="#video-embed" class="video-tease__icon js-video-modal-trigger">
+                    <span class="u-sr-only">Play video</span>
+                    <img src="/static/img/icons/play-button.svg" alt="Play">
+                </a>
+            </section>
+
+            <div id="video-embed" class="mfp-hide">
+                {{ video.embed_code }}
+            </div>
+        {% endif %}
+    {% endif %}
+
+
+    {% if block.type.handle == 'iconNav' %}
+        <nav class="icons-nav">
+            <ul class="nav-list">
+
+                {% for button in block.children %}
+                    {% set icon = button.image.first().url | replace({ (siteUrl): '/' }) %}
+                <li>
+                    <a href="{{ button.linkedPage.first().url }}">
+                        {{ craft.inlin.er( icon ) | raw }}
+                        <div class="txt">
+                            {% if button.heading is not empty %}
+                                <span class="ttl">{{ button.heading }}</span>
+                            {% endif %}
+                            {% if button.subheading is not empty %}
+                                <span class="sub">{{ button.subheading }}</span>
+                            {% endif %}
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </nav>
+    {% endif %}
+
+
+    {% if block.type.handle == 'iAmGladneyPromoSmall' %}
+        <section class="i-am-gladney-small l-container {{ containerClass }}">
+            <img class="i-am-gladney-small__graphic" src="/static/img/i-am-gladney.svg" alt="I Am Gladney">
+            <p class="i-am-gladney-small__text">Gladney Family Associations across the country provide parent to parent support for all Gladney&nbsp;families.</p>
+        </section>
+    {% endif %}
+
+
+    {% if block.type.handle == 'iAmGladneyPromoLarge' %}
+        <section class="i-am-gladney">
+            <div class="l-container l-container--17">
+                <div class="i-am-gladney__top">
+                    <img class="i-am-gladney__graphic" src="/static/img/i-am-gladney.svg" alt="I Am Gladney">
+
+                    <h3 class="i-am-gladney__title">You are invited to be a part of the <br>tradition and excitement of the <strong>Gladney Family Association</strong> network of support</h3>
+                </div>
+
+                <div class="i-am-gladney__text">
+                    <p>The Gladney Family Associations started over 50 years ago to support, nurture and educate Gladney parents and parents-to-be on issues concerning adoption and parenting. Today, that tradition continues for you and your children. GFAs across the country provide parent-to-parent support for adoptive families. GFA events are a great place to build community and to just have fun.</p>
+                    <p>To learn more about GFA’s near you visit</p>
+                    <p><a href="http://iamgladney.org" class="button button--rnd" title="Visit I Am Gladney.org">IAMGLADNEY.ORG</a></p>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
+    {% if block.type.handle == 'blocksNav' %}
+        <div class="u-push--top--2 l-container">
+            <div class="l-grid">
+                <ul class="block-links">
+
+                {% for button in block.children %}
+                    {% if button.linkedPage | length %}
+                        {% set url = button.linkedPage.first().url %}
+                    {% else %}
+                        {% set url = button.websiteUrl %}
+                    {% endif %}
+                    <li><a href="{{ url }}">{{ button.label }}</a></li>
+                {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endfor %}

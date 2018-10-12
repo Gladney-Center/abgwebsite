@@ -1,0 +1,34 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <header class="banner banner--tall">
+        <h1 class="banner__heading">{{ heading | raw }}</h1>
+    </header>
+
+    <article class="page banner-overlap banner-overlap--big">
+
+        {% include '_modules/_sidebar-nav' %}
+
+        <header class="big-heading l-container l-container--9 mobile-only">
+            <h1 class="big-heading__title">{{ entry.title }}</h1>
+            {% if entry.subheading is not empty %}<h2 class="big-heading__subtitle">{{ entry.subheading }}</h2>{% endif %}
+        </header>
+
+        {% include '_modules/_content-blocks' with {'containerClass': 'l-container--9'} %}
+
+    </article>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <div class="banner"></div>
+
+    <article class="page banner-overlap">
+
+        <header class="l-container l-container--9 wysiwyg">
+            <h1 class="u-sr-only">{{ entry.title }}</h1>
+            <h2 class="underline-title">{{ heading | widont }}</h2>
+        </header>
+
+        {% include '_modules/_content-blocks' with {'containerClass': 'l-container--9'} %}
+
+    </article>
+
+{% endblock %}

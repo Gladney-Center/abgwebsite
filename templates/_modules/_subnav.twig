@@ -1,0 +1,82 @@
+{% set segments = craft.request.getSegments() %}
+{% set len = segments | length %}
+
+{% if entry.hasDescendants() %}
+    {% set targetLevel = entry.level %}
+{% elseif entry.level == 3 %}
+    {% set targetLevel = entry.level - 1 %}
+{% else %}
+    {% set targetLevel = entry.level - 2 %}
+
+    {% if len < 5 and (segments[1] == 'international') %}
+        {% set targetLevel = entry.level - 1 %}
+    {% endif %}
+{% endif %}
+
+{% if len > 1 and len < 4 and segments[1] == 'adoption-training-education' %}
+    {% set targetLevel = targetLevel - 1 %}
+{% endif %}
+
+{% set subsection = craft.entries.ancestorOf(entry).level(targetLevel).first() %}
+{% if subsection is defined and subsection is not null %}
+    {% set sectionHead = subsection %}
+    {% set navTitle = subsection.title %}
+{% else %}
+    {% set sectionHead = entry %}
+    {% set navTitle = entry.title %}
+{% endif %}
+
+{% if len > 2 %}
+    {% if segments[1] == 'international' %}
+        {% set navTitle %}
+            <span class="desktop-only"><a href="/i-want-to-adopt/international">International</a> / </span>{{ navTitle }}
+        {% endset %}
+    {% endif %}
+{% endif %}
+
+
+{% set startNode = craft.entries.level(targetLevel).slug(sectionHead.slug).first() %}
+
+<div class="subnav">
+    <div class="l-container">
+        {% set labelClass = '' %}
+        {% if sectionHead.slug == 'resources' or  sectionHead.slug == 'post-adoption-support' or  sectionHead.slug == 'about' %}
+            {% set labelClass = 'mobile-only' %}
+        {% endif %}
+        {% set findReplace = {
+            'Adoption Training': '<span class="hide-mobile">Adoption</span> Training',
+        } %}
+        <div class="subnav__label {{ labelClass }}">
+            <strong>{{ navTitle | replace( findReplace ) | raw }}</strong>
+        </div>
+        <nav>
+            <ul class="subnav__nav">
+                {% if sectionHead.slug != 'resources' and  sectionHead.slug != 'adoption-training-education' %}<li><a{% if entry.slug == sectionHead.slug %} class="is-active"{% endif %} href="{{ sectionHead.url }}">Overview</a></li>{% endif %}
+
+            {% nav node in startNode.getDescendants(1) %}
+                {% set nodeClass = '' %}
+                {% for slug in segments %}
+                    {% if node.slug == slug %}
+                        {% set nodeClass = 'is-active' %}
+                    {% endif %}
+                {% endfor %}
+                {% if node.type == 'redirect' %}
+                    {% if node.linkedPage | length %}
+                        {% set url = node.linkedPage.first().url %}
+                    {% elseif node.websiteUrl is not empty %}
+                        {% set url = node.websiteUrl %}
+                    {% else %}
+                        {% set url = node.url %}
+                    {% endif %}
+                {% else %}
+                    {% set url = node.url %}
+                {% endif %}
+                <li>
+                    <a class="{{ nodeClass }}" href="{{ url }}">{{ node.title }}</a>
+                </li>
+            {% endnav %}
+
+            </ul>
+        </nav>
+    </div>
+</div>

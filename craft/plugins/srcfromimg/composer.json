@@ -1,0 +1,14 @@
+{
+	"name": "chrisrowe/srcfromimg",
+	"description": "Returns the src attribute from a full &lt;img&gt; tag",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Chris Rowe",
+			"homepage": "http://chrisrowe.net"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

@@ -1,0 +1,100 @@
+{% extends '_layouts/site' %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <header class="banner banner--text-bottom">
+        <h1 class="banner__heading">{{ heading }}</h1>
+    </header>
+
+    <div class="page banner-overlap banner-overlap--big">
+        {% include '_modules/_content-blocks' %}
+    </div>
+
+    <div class="l-container">
+        <section class="highlight-grid">
+            {# <div class="highlight-grid__bg-1"></div> #}
+            <div class="highlight-grid__item highlight-grid__item--mission">
+                <h2 class="highlight-grid__title">Gladney Mission</h2>
+                <p>Creating Bright Futures through Adoption</p>
+            </div>
+            <div class="highlight-grid__item highlight-grid__item--logo">
+                <img src="/static/img/branding/gladney-icon-white.svg">
+            </div>
+            <div class="highlight-grid__item highlight-grid__item--numbers">
+                <h2 class="highlight-grid__title">In 2018</h2>
+                <strong>248</strong>
+                <p>children were placed with adoptive families through Gladney</p>
+
+            </div>
+            <div class="highlight-grid__item highlight-grid__item--vision">
+                <h2 class="highlight-grid__title">Gladney Vision</h2>
+                <p>For the sake of the children and those who love them, Gladney is dedicated to creating the finest adoption experience possible while forging new paths in serving the mission of adoption.</p>
+            </div>
+
+            <div class="highlight-grid__flowers highlight-grid__flowers--3"></div>
+            <div class="highlight-grid__flowers highlight-grid__flowers--4"></div>
+            <div class="highlight-grid__flowers highlight-grid__flowers--5"></div>
+        </section>
+    </div>
+
+    <div class="l-container">
+        <div class="content-carousel js-content-carousel">
+
+            {% set category = craft.categories.slug('this-is-why') %}
+            {% set whyProfiles = craft.entries.section('staff').relatedTo(category).find() %}
+
+            {% for item in whyProfiles %}
+                {% if item.image | length %}
+                    {% set thumb = {
+                        width: 540,
+                        height: 540,
+                        mode: 'crop',
+                    } %}
+                    {% set img = item.image.first().getUrl( thumb ) %}
+                {% else %}
+                    {% set img = 'http://via.placeholder.com/270x270?text=Coming+Soon' %}
+                {% endif %}
+
+                <div class="content-carousel__item">
+                    <div class="content-carousel__item">
+                        <div class="story story--staff">
+                            <div class="story__image">
+                                <img src="{{ img }}" alt="{{ item.title }}">
+                                <span>
+                                    {{ item.title }}{% if item.position | length %}, <em>{{ item.position }}</em>{% endif %}
+                                </span>
+                            </div>
+
+                            <div class="story__content">
+                                <header class="story__heading">
+                                    <h3>This is why</h3>
+                                    <h4> The Gladney staff explains why they do what they do every day.</h4>
+                                </header>
+                                {{ item.textArea }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <section class="cta-bucket cta-bucket--image" style="background-image: url('/static/img/temp/cta-bucket.jpg');">
+        <div class="l-container">
+            <a href="/contact" class="button button--xl button--outline">We want to hear from&nbsp;you</a>
+        </div>
+    </section>
+
+{% endblock %}

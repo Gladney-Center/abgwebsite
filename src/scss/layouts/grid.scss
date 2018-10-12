@@ -1,0 +1,28 @@
+.l-grid {
+    @include grid-container();
+    @include grid-collapse();
+
+
+    &--3-col > * {
+        @include grid-column(15);
+
+        @include mq(m) {
+            @include grid-column(7);
+
+            &:nth-child(2n+3) {
+                clear: both;
+            }
+        }
+        @include mq(l) {
+            @include grid-column(5);
+
+            &:nth-child(2n+3) {
+                clear: none;
+            }
+
+            &:nth-child(3n+4) {
+                clear: both;
+            }
+        }
+    }
+}

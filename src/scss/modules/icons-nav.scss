@@ -1,0 +1,147 @@
+.icons-nav {
+    background-color: #FFF;
+    padding: 1rem;
+
+    @include mq( 768px ) {
+        padding: 6.1111rem 1rem;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 0 auto;
+        max-width: 85rem;
+
+        @include mq( 480px ) {
+            max-width: 28rem;
+        }
+        @include mq( 768px ) {
+            flex-direction: row;
+            max-width: 85rem;
+        }
+    }
+    li {
+        display: flex;
+        flex: 1 1 auto;
+        justify-content: center;
+        padding: 2rem 0;
+        text-align: center;
+
+        @include mq( 768px ) {
+            padding: 0 1rem;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #b4b4b4;
+
+            @include mq( 768px ) {
+                border: none;
+                border-right: 1px solid #b4b4b4;
+            }
+        }
+    }
+    svg {
+        @include size( 8.3333rem );
+        display: block;
+        margin: 0 auto 2.6666rem;
+
+        @include mq( $from: 480px, $until: 767px ) {
+            margin: 0 2rem 0 0;
+        }
+
+        .bg {
+            fill: rgba(palette(branding, pri), 0);
+            transition: fill 200ms ease;
+        }
+        .ring {
+            stroke: palette(branding, sec);
+            stroke-width: 6px;
+            transition: stroke 200ms ease;
+        }
+        .icon {
+            fill: palette(branding, sec);
+            transition: fill 200ms ease;
+        }
+
+        .international & {
+
+            .bg {
+                fill: rgba(palette(branding, navy), 0);
+            }
+            .ring {
+                stroke: palette(branding, navy);
+            }
+            .icon {
+                fill: palette(branding, navy);
+            }
+        }
+    }
+    .ttl,
+    .sub {
+        display: block;
+        transition: color 200ms ease;
+    }
+    .ttl {
+        color: palette(branding, navy);
+        font-family: $font2;
+        font-size: 1.75rem;
+        letter-spacing: 0.01em;
+        line-height: 1;
+        text-transform: uppercase;
+
+        @include mq( 1200px ) {
+            font-size: 2.6666rem;
+        }
+    }
+    .sub {
+        color: palette(branding, pri);
+        font-family: $font3;
+        font-size: 0.8888rem;
+
+        @include mq( 1200px ) {
+            font-size: 1.2222rem;
+        }
+
+        .international & {
+            color: palette(branding, navy);
+            font-size: 1.2222rem;
+        }
+    }
+    a {
+        display: block;
+
+        @include mq( $from: 480px, $until: 767px ) {
+            align-items: center;
+            display: flex;
+            max-width: 22rem;
+            width: 100%;
+        }
+
+        &:hover {
+
+            svg {
+
+                .bg {
+                    fill: palette(branding, pri);
+                }
+                .ring {
+                    stroke: palette(branding, pri);
+                }
+                .icon {
+                    fill: #FFF;
+                }
+
+                .international & {
+
+                    .bg {
+                        fill: palette(branding, navy);
+                    }
+                    .ring {
+                        stroke: palette(branding, navy);
+                    }
+                }
+            }
+        }
+    }
+}

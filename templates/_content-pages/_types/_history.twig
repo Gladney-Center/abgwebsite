@@ -1,0 +1,227 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <header class="banner banner--text-bottom">
+        <h1 class="banner__heading">{{ heading }}</h1>
+    </header>
+
+    <div class="page banner-overlap banner-overlap--big">
+        {% include '_modules/_content-blocks' %}
+    </div>
+
+    <section class="l-container">
+        <ol class="timeline">
+
+            <li class="timeline__event timeline__event--a timeline__event--rtl">
+                <h3 class="timeline__date">1887</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/1.jpg" alt="I.Z.T. Morris">
+                </div>
+                <div class="timeline__primary">
+                    <p>In 1887, while Fort Worth was becoming a cattle destination via the Chisholm Trail, a circuit-riding Methodist minister named I.Z.T. Morris was creating Fort Worth as a destination of hope for orphaned children through the Texas Children’s Home and Aid Society.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--b">
+                <h3 class="timeline__date">1927</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/2.jpg" alt="Eda Gladney">
+                </div>
+                <div class="timeline__primary">
+                    <p>Edna Gladney was named Superintendent of the Texas Children’s Home.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--c">
+                <h3 class="timeline__date">1936</h3>
+                <div class="timeline__primary">
+                    <blockquote>
+                        <p>There are no illegitimate children, only illegitimate parents.</p>
+                        <cite>Edna Gladney</cite>
+                    </blockquote>
+                    <p>Edna Gladney’s famous argument on removing the stigma of illegitimacy from birth records before the Legislature. It made Texas the first state in the Southwest to legally remove the stigma of illegitimacy from birth records.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--b timeline__event--rtl">
+                <h3 class="timeline__date">1941</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/3.jpg" alt="Blossoms in the Dust poster">
+                </div>
+                <div class="timeline__primary">
+                    <p>The movie “Blossoms in the Dust” starring Greer Garson highlighted the accomplishments of Edna Gladney.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--c">
+                <h3 class="timeline__date">1941</h3>
+                <div class="timeline__primary">
+                    <img src="/static/img/timeline/4.jpg" alt="The Edna Gladney Home">
+                    <p>In honor of her decades of service, the Board of Directors <br>renamed the agency The Edna Gladney Home.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--a timeline__event--rtl">
+                <h3 class="timeline__date">1951</h3>
+                <div class="timeline__secondary">
+                </div>
+                <div class="timeline__primary">
+                    <p>Edna Gladney successfully argued that adopted children should have the same inheritance rights as biological children.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--a">
+                <h3 class="timeline__date">1952</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/gladney-family-association-logo.png" alt="Gladney Family Association logo">
+                </div>
+                <div class="timeline__primary">
+                    <p>The Houston Auxiliary was the first support group of Gladney volunteers. Today, there are 16 Gladney Family Associations (formerly Auxiliaries) operating around the country.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--a timeline__event--rtl">
+                <h3 class="timeline__date">1963</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/5.jpg" alt="Ruby Lee Piester">
+                </div>
+                <div class="timeline__primary">
+                    <p>Ruby Lee Piester joined the staff as director of social services in 1960. In 1963 she was named
+                    executive director, a position she would hold for more than 20 years. Ruby Lee focused on the well-being of birthmothers and ensuring they received needed counseling.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--c">
+                <h3 class="timeline__date">1976</h3>
+                <div class="timeline__primary">
+                    <p class="timeline__hotline">1-800-452-3639</p>
+                    <!--<p>Edna Gladney’s famous argument on removing the stigma of illegitimacy from birth records before the Legislature. It made Texas the first state in the Southwest to legally remove the stigma of illegitimacy from birth records.</p>-->
+                    <p>Gladney introduced its 1-800 crisis pregnancy hotline in 1976. It was thought to be the first such hotline in the country. 1-800-GLADNEY (800.452.3639)</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--a timeline__event--rtl">
+                <h3 class="timeline__date">1980</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/national-council-for-adoption-logo.png" alt="National Council for Adoption Logo">
+                </div>
+                <div class="timeline__primary">
+                    <p>Gladney became a charter member of the National Council for Adoption (NCFA), which was organized to promote agency adoptions</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--a">
+                <h3 class="timeline__date">1983</h3>
+                <div class="timeline__secondary">
+                </div>
+                <div class="timeline__primary">
+                    <p>The Texas Legislature enacted its Voluntary Registry Law. The Gladney Center created its own Voluntary Registry at that time, in accordance with Texas law. Gladney also operates a Sibling Registry for adopted persons born to the same birthmother or birth father.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--b timeline__event--rtl">
+                <h3 class="timeline__date">1991</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/6.svg" alt="Gladney Center for Adoption logo 1991">
+                </div>
+                <div class="timeline__primary">
+                    <p>The Board officially renamed the agency The Gladney Center.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--a">
+                <h3 class="timeline__date">1992</h3>
+                <div class="timeline__secondary">
+                    <img class="xs" src="/static/img/timeline/7.svg">
+                </div>
+                <div class="timeline__primary">
+                    <p>Gladney’s current international adoption program expanded under the leadership of Gladney President, Michael J. McMahon in 1992. Today, Gladney maintains programs in China, Colombia and Taiwan.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--c">
+                <h3 class="timeline__date">2002</h3>
+                <div class="timeline__primary">
+                    <img src="/static/img/timeline/8.jpg" alt="Gladney Fort Worth campus">
+                    <p>Gladney opens its doors to a new campus at 6300 John Ryan Drive, Fort Worth, TX.</p>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--a timeline__event--rtl">
+                <h3 class="timeline__date">2007</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/frank-garrott-5.jpg" alt="Frank Garrott" style="border-radius:100%;">
+                </div>
+                <div class="timeline__primary">
+                    <p>During Frank Garrott’s 10 years as President and CEO of Gladney he established innovative and far-reaching outreach efforts, such as the groundbreaking Pathways program as well as the Next Steps initiative that supports birth mothers. In addition, under his leadership Gladney’s mission expanded with the creation of both AdoptED and Gladney University.</p>
+                    <blockquote>
+                        <p>It’s really remarkable that Gladney has celebrated over 130 years of service, and that we’re still continuing to evolve and&nbsp;grow.</p>
+                        <cite>
+                            Frank Garrott, <span>Gladney President &amp; CEO</span>
+                        </cite>
+                    </blockquote>
+                </div>
+            </li>
+
+
+            <li class="timeline__event timeline__event--c">
+                <h3 class="timeline__date">2017</h3>
+                <div class="timeline__primary">
+                    <img src="/static/img/timeline/130-years.png" alt="Celebrating 130 years of hope" class="small">
+                </div>
+            </li>
+
+            <li class="timeline__event timeline__event--a timeline__event--rtl">
+                <h3 class="timeline__date">2018</h3>
+                <div class="timeline__secondary">
+                    <img src="/static/img/timeline/mark-melson-5.jpg" alt="Mark Melson" style="border-radius:100%;">
+                </div>
+                <div class="timeline__primary">
+                    <p>Mark Melson is named President and CEO of Gladney effective January 1, 2018.</p>
+                    <blockquote>
+                        <p>Mark Melson is the right man at the right time for Gladney. Our board has been focusing on all the issues related to future planning and succession. Mark’s role as the Chief Operating Officer for Gladney as well as his work as Vice President for Development proved his solid operational and leadership abilities. We all look forward to Gladney’s next generation of leadership and growth under Mark.</p>
+                        <cite>
+                            Christopher Dezzi, <span>Gladney Board Chairman</span>
+                        </cite>
+                    </blockquote>
+                </div>
+            </li>
+
+            <li class="timeline__event timeline__event--c">
+                <div class="timeline__primary">
+                    <blockquote>
+                        <p>We are not finished when we have found homes and names for our children. It is our duty to ensure and protect their futures.</p>
+                        <cite>Edna Gladney</cite>
+                    </blockquote>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+{% endblock %}

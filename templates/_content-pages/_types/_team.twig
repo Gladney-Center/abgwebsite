@@ -1,0 +1,19 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    <header class="banner banner--plain">
+        <h1 class="u-sr-only">{{ entry.title }}</h1>
+        <h2 class="banner__heading banner__heading--s">{{ entry.textArea | widont | raw }}</h2>
+    </header>
+
+    <section class="l-container l-container--11">
+
+        {% include '_modules/_team-grid' %}
+
+    </section>
+
+{% endblock %}

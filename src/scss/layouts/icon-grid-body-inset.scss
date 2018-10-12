@@ -1,0 +1,38 @@
+.l-icon-grid-body-inset {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @include mq(l) {
+    flex-direction: row;
+  }
+
+  > .left {
+      // @include grid-column(17, $grid--17);
+      margin-bottom: 3rem;
+      margin-left: 0;
+      width: 100%;
+
+      @include mq(l) {
+          @include grid-column(6, $grid--17);
+      }
+
+      @include mq(xl) {
+          @include grid-column(6, $grid--17);
+          // margin-left: -1*$col-width-pc;
+      }
+  }
+
+  > .right {
+      @include grid-column(17, $grid--17);
+
+      @include mq(l) {
+          @include grid-column(11, $grid--17);
+      }
+
+      @include mq(xl) {
+          @include grid-column(11, $grid--17);
+      }
+  }
+}

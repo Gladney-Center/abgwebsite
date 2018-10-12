@@ -1,0 +1,134 @@
+/* ul */.block-links {
+    @include grid-container();
+    margin-bottom: 3rem;
+
+    @include mq(600px) {
+    }
+
+    li {
+        @include grid-column(15);
+
+        @include mq(500px) {
+            @include grid-column(7.5);
+        }
+
+        @include mq(1200px) {
+            @include grid-column(3);
+        }
+    }
+
+
+    a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        height: 8rem;
+        padding: 4rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-size: rem(16px);
+        line-height: 1.625;
+        @include tracking(200);
+        font-weight: 700;
+        text-transform: uppercase;
+        transition: background-color 200ms ease;
+        border: 2px solid;
+
+        @include mq(500px) {
+            height: 10rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @include mq(1200px) {
+            height: 11rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        &::after {
+            display: none;
+            content: "– Get Support";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0.5rem;
+            font-family: $font3;
+            font-style: italic;
+            font-size: rem(16px);
+            color: #fff;
+            text-transform: capitalize;
+            letter-spacing: 0;
+            font-weight: 400;
+        }
+
+        &:focus,
+        &:hover {
+            background: blue;
+            color: #fff;
+
+            &::after {
+                display: block;
+            }
+        }
+    }
+
+
+    /* Colors */
+    li:nth-child(1) a {
+        color: palette(branding, navy);
+
+        &:focus,
+        &:hover {
+            color: #fff;
+            background-color: palette(branding, navy);
+            border-color: palette(branding, navy);
+        }
+    }
+
+    li:nth-child(2) a {
+        color: palette(branding, green);
+
+        &:focus,
+        &:hover {
+            color: #fff;
+            background-color: palette(branding, green);
+            border-color: palette(branding, green);
+        }
+    }
+
+    li:nth-child(3) a {
+        color: palette(branding, green--l);
+
+        &:focus,
+        &:hover {
+            color: #fff;
+            background-color: palette(branding, green--l);
+            border-color: palette(branding, green--l);
+        }
+    }
+
+    li:nth-child(4) a {
+        color: palette(branding, teal);
+
+        &:focus,
+        &:hover {
+            color: #fff;
+            background-color: palette(branding, teal);
+            border-color: palette(branding, teal);
+        }
+    }
+
+    li:nth-child(5) a {
+        color: palette(branding, salmon);
+
+        &:focus,
+        &:hover {
+            color: #fff;
+            background-color: palette(branding, salmon);
+            border-color: palette(branding, salmon);
+        }
+    }
+}

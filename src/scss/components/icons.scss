@@ -1,0 +1,25 @@
+.icon {
+    width: 1em;
+    height:1em;
+}
+
+.icon-person {
+    position: relative;
+    top: 0.1em;
+}
+
+.icon-person--f {
+    fill: palette(branding, salmon);
+}
+
+.icon-heart {
+    fill: #f1512b;
+}
+
+.icon-dollar {
+    fill: palette(branding, green);
+}
+
+.icon-group {
+    fill: palette(branding, green);
+}

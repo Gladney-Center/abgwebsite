@@ -1,0 +1,39 @@
+/**
+Video tease contains a preview image and play icon, which triggers a modal containing the video
+*/
+.video-tease {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+    position: relative;
+
+    .wysiwyg + & {
+        margin-top: 4rem;
+    }
+
+    &__icon {
+        display: block;
+        z-index: 1;
+        cursor: pointer;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 160px;
+        max-width: 30%;
+        transform: translate(-50%,-50%);
+        outline: none;
+    }
+}
+#video-embed {
+    @include size( 80vw 44.8vw );
+    margin: 0 auto;
+
+    iframe {
+        @include size( 100% );
+    }
+
+    & + .wysiwyg {
+        margin-top: 4rem;
+    }
+}

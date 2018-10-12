@@ -1,0 +1,51 @@
+.site-header {
+    background-color: #FFF;
+    box-shadow: 0 0 5px rgba(#000, 0.25);
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: index($layers, nav);
+
+    .l-container {
+        align-items: center;
+        display: flex;
+        height: 15vh;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+        position: relative;
+        transition: height 350ms ease;
+
+        @media screen and ( min-width: 1180px ) {
+            height: 90px;
+        }
+        @media screen and ( min-height: 600px ) and ( min-width: 1180px ) {
+            height: 18vh;
+
+            .scrolled & {
+                height: 15vh;
+            }
+        }
+    }
+
+    &__branding {
+        display: block;
+        width: 45vw;
+        max-width: 230px;
+        position: relative;
+        z-index: index($layers, branding);
+
+        @media screen and ( min-width: 1180px ) {
+            max-width: 260px;
+        }
+    }
+}
+
+.headroom {
+    transition: transform 350ms ease;
+}
+
+.headroom--unpinned {
+    transform: translateY(-100%);
+}

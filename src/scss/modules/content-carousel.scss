@@ -1,0 +1,68 @@
+.content-carousel {
+
+    &__item {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+    }
+
+
+    .flickity-prev-next-button {
+        width: 30px;
+        height: 30px;
+        background-color: palette(branding, navy);
+        top: auto;
+        bottom: -3rem;
+
+        &:focus,
+        &:hover {
+           background-color: palette(branding, green);
+        }
+
+        svg,
+        svg path {
+            fill: #fff;
+        }
+
+        @include mq($until: 760px) {
+
+            left: auto;
+            right: auto;
+
+            &.next {
+                left: 2rem;
+            }
+        }
+
+        @include mq(760px) {
+            bottom: -2rem;
+            left: 50%;
+
+            &.previous {
+                margin-left: -36px;
+            }
+
+            &.next {
+                margin-right: -36px;
+            }
+        }
+
+        @include mq(xl) {
+            top: 50%;
+            bottom: auto;
+
+            &.previous {
+                left: 0;
+                right: auto;
+                margin-left: -3rem;
+            }
+
+            &.next {
+                left: auto;
+                right: 0;
+                margin-right: -3rem;
+            }
+        }
+
+    }
+}

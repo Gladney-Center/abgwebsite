@@ -1,0 +1,31 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% if entry.heading is not empty %}
+    {% set heading = entry.heading %}
+{% else %}
+    {% set heading = title %}
+{% endif %}
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    {% include '_includes/_make-banner' %}
+
+    <header class="banner banner--text-bottom">
+        <h1 class="banner__heading">{{ heading }}</h1>
+    </header>
+
+    <div class="page banner-overlap banner-overlap--big">
+        {% include '_modules/_content-blocks' %}
+    </div>
+
+    <section id="post-adoption-team" class="meet-our-team l-container l-container--11">
+        <h2>Meet Our Team</h2>
+
+        {% include '_modules/_team-grid' with {'cat': 'post-adoption-support'} %}
+
+    </section>
+
+{% endblock %}

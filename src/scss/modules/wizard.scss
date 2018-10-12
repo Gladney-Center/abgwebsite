@@ -1,0 +1,143 @@
+.wizard {
+    padding: 0 0.5rem 50vh;
+
+    .question {
+        margin-bottom: 9vh;
+        padding-top: 17vh;
+        text-align: center;
+        transition: opacity 500ms ease;
+
+        @include mq( 768px ) {
+            padding-top: 25vh;
+
+            &:not(:first-child) {
+                margin-top: -16vh;
+            }
+        }
+
+        &:not(:first-child) {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        &.viewed {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+    .status {
+        @include size( 3.3333rem );
+        align-items: center;
+        border: 2px solid #34ceaa;
+        border-radius: 50%;
+        color: #FFF;
+        display: flex;
+        font-family: $font3;
+        font-size: 0.8333rem;
+        font-style: italic;
+        justify-content: center;
+        margin: 0 auto 2rem;
+
+        .index,
+        .total {
+            font-family: $font1;
+            font-style: normal;
+            padding: 0 0.25rem;
+        }
+        .index {
+
+        }
+        .total {
+
+        }
+    }
+    p {
+        @include smoothing(false);
+        color: #FFF;
+        font-size: 1.25rem;
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 0 auto 2.5rem;
+        max-width: 28em;
+
+        @include mq( 768px ) {
+            font-size: 1.6666rem;
+        }
+    }
+    .option-buttons {
+
+        .button {
+            font-family: $font2;
+            margin: 0 0.25rem;
+            min-width: 5.25rem;
+
+            @include mq( 768px ) {
+                margin: 0 0.5rem;
+                min-width: 8rem;
+            }
+
+            &.selected {
+                color: palette(branding, navy);
+                background-color: palette(branding, sec);
+                border-color: palette(branding, sec);
+            }
+        }
+    }
+
+    .answer {
+        opacity: 0;
+        padding-top: 17vh;
+        pointer-events: none;
+        text-align: center;
+        transition: opacity 500ms ease;
+
+        @include mq( 768px ) {
+            padding-top: 35vh;
+        }
+
+        &.viewed {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        p {
+            color: #FFF;
+            font-family: $font2;
+            font-size: 2.5rem;
+            letter-spacing: 0.01em;
+            line-height: 0.9;
+            margin-bottom: 3rem;
+            max-width: 16em;
+            text-transform: uppercase;
+
+            @include mq( 768px ) {
+                font-size: 4rem;
+            }
+
+            em {
+                color: palette(branding, sec);
+                display: inline-block;
+                font-style: normal;
+            }
+        }
+        .button {
+            border-color: palette(branding, pri);
+            color: #FFF;
+            font-family: $font2;
+        }
+    }
+
+    .btn-start-over {
+        color: #FFF;
+        display: block;
+        font-family: $font3;
+        font-style: italic;
+        margin-top: 2.5rem;
+        opacity: 0.7;
+        transition: opacity 200ms ease;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

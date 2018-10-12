@@ -1,0 +1,19 @@
+.address-list {
+    h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.25em;
+        font-family: $font1;
+        font-weight: 700;
+        color: palette(branding, green);
+        font-size: rem(18px);
+    }
+
+
+    p {
+        font-size: rem(14px);
+    }
+
+    .group {
+        display: block;
+    }
+}

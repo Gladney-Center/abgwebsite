@@ -1,0 +1,67 @@
+/* ul */.form-fields {
+    color: palette(branding, navy); /* Same as label color */
+
+    li {
+        margin-bottom: 1.5rem;
+    }
+
+    .single-line {
+
+        @include mq(m) {
+            display: flex;
+        }
+
+        input {
+            margin-bottom: 1rem;
+
+            @include mq(m) {
+                margin-bottom: 0;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+
+                &:first-of-type { margin-left: 0 }
+
+                &:last-of-type { margin-right: 0; }
+            }
+        }
+    }
+
+
+    .extra-field label {
+        color: palette(base, font--l);
+        margin-bottom:.5em;
+        font-size: rem(18px);
+        text-transform: none;
+        font-weight: 400;
+        @include tracking(0);
+    }
+
+
+    &--center {
+        label {
+            text-align: center;
+        }
+    }
+}
+
+
+ol.form-fields {
+    margin-left: 2.5em;
+    list-style-type: decimal;
+    color: palette(branding, navy); /* Same text styles as label */
+    margin-bottom:.5em;
+    font-size: rem(16px);
+    text-transform: uppercase;
+    font-weight: 700;
+    @include tracking(25);
+
+    li.extra-field,
+    li.form-actions {
+        list-style-type: none;
+    }
+
+    li {
+        // padding-left: 1em;
+        margin-left: -1rem;
+    }
+}

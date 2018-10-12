@@ -1,0 +1,37 @@
+{% if cat is defined and cat is not empty %}
+    {% set category = craft.categories.group('staff').slug(cat).first() %}
+    {% set team = craft.entries.section('staff').relatedTo(category).find() %}
+{% else %}
+    {% set team = craft.entries.section('staff').order('lastName asc') %}
+{% endif %}
+
+<div class="team-grid">
+
+    {% for member in team %}
+
+        {% if member.image | length %}
+            {% set imageAsset = member.image.first() %}
+            {% set img = craft.imager.transformImage(imageAsset, {
+                width: 270,
+                height: 270,
+                mode: 'crop',
+                position: imageAsset.focusPctX ~ '% ' ~ imageAsset.focusPctY ~ '%'
+            }) %}
+        {% else %}
+            {% set img = 'http://via.placeholder.com/270x270?text=Coming+Soon' %}
+        {% endif %}
+
+    <div class="team-member">
+        <img src="{{ img }}" alt="{{ member.title }} Headshot" class="team-member__photo">
+        <div class="team-member__details">
+            <h3 class="team-member__name">{{ member.firstName }} {{ member.lastName }}{%if member.label is not empty %}, {{ member.label }}{% endif %}</h3>
+            <p class="team-member__title">{{ member.position }}{%if member.department is not empty %} – <em>{{ member.department }}{% endif %}</em></p>
+            <p class="team-member__contacts">
+                {% if member.phone is not empty and member.phone != '###-###-####' %}<a href="tel:+1{{ member.phone | replace({'(': '', ')': '', '.': '', '-': ''}) }}">{{ member.phone }}</a>{% endif %}
+                {% if member.email is not empty %}<a href="mailto:{{ member.email }}" title="Click to email {{ member.title }}">{{ svgSprite.icon('email', '') }} Email</a>{% endif %}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>

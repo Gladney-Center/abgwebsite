@@ -1,0 +1,124 @@
+{% extends '_layouts/site' %}
+{% set title = entry.title %}
+
+{% if entry.image | length %}
+    {% if bodyClass is defined %}
+        {% set bodyClass = bodyClass ~ ' has-image-float' %}
+    {% else %}
+        {% set bodyClass = 'has-image-float' %}
+    {% endif %}
+    {% set imageAsset = entry.image.first() %}
+    {% set image = craft.imager.transformImage(imageAsset, {
+        width: 535,
+        height: 815,
+        mode: 'crop',
+        position: imageAsset.focusPctX ~ '% ' ~ imageAsset.focusPctY ~ '%'
+    }) %}
+    {% set imgTag %}
+        <img src="{{ image }}" alt="" class="image-float-right">
+    {% endset %}
+{% endif %}
+
+{% if entry.contentBlocks.level(1).type('imageGallery') | length %}
+    {% if bodyClass is defined %}
+        {% set bodyClass = bodyClass ~ ' has-image-gallery' %}
+    {% else %}
+        {% set bodyClass = 'has-image-gallery' %}
+    {% endif %}
+{% endif %}
+
+{% set stories = entry.parent.children %}
+{% set prevEntry = entry.getPrev(stories) %}
+{% set nextEntry = entry.getNext(stories) %}
+
+
+{% block main %}
+
+    {% include '_modules/_subnav' %}
+
+    <article class="page success-story">
+
+        <header class="l-container">
+            <h1>{{ entry.heading | widont }}</h1>
+            <h2>{{ entry.subheading | widont }}</h2>
+        </header>
+
+        {{ imgTag | default('') }}
+
+        {% include '_modules/_content-blocks' with { 'containerClass': '' } %}
+
+        {% if stories | length > 1 %}
+        <section class="story-prev-next l-container">
+            <hr>
+
+            <div class="btn-prev-next">
+                {% if prevEntry %}
+                <a href="{{ prevEntry.url }}" title="{{ prevEntry.title }}">&laquo; Prev Story</a>
+                {% else %}
+                <span>&nbsp;</span>
+                {% endif %}
+            </div>
+            <div class="btn-prev-next">
+                {% if nextEntry %}
+                <a href="{{ nextEntry.url }}" title="{{ nextEntry.title }}">Next Story &raquo;</a>
+                {% else %}
+                <span>&nbsp;</span>
+                {% endif %}
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="cta-bucket cta-bucket--shadow  ">
+            <div class="l-container">
+                <a href="https://www.mygladney.com/auth/register" class="button button--xl button--outline">Get&nbsp;Started</a>
+            </div>
+        </section>
+
+    </article>
+
+    <section class="share-your-story">
+        <div class="l-container l-container--17">
+            <div class="l-grid">
+                <h3 class="share-your-story__title">
+                    Share your family's
+                    <strong>Adoption Story</strong>
+                </h3>
+
+                <p class="share-your-story__intro">
+                    We want to make it easy for you to share your stories with us and with other families who are going through this process. If you recently adopted from
+                        {% if craft.request.segment(2) == "domestic-infant" %}
+                            the Domestic Infant Program
+                        {% elseif craft.request.segment(2) == "international" %}
+                            the International Program
+                        {% elseif craft.request.segment(2) == "foster-adoption" %}
+                            the New Beginnings Program
+                        {% endif %}
+                        and would like to share your photos and stories, here are some story starters ›
+                </p>
+
+                <ul class="share-your-story__list bullet-list">
+                    <li>The first time I saw you...</li>
+                    <li>Our placement day...</li>
+                    <li>We chose Gladney because...</li>
+                    <li>Our adoption journey...</li>
+                    <li>Our roller coaster ride...</li>
+                    <li>Not knowing what to expect...</li>
+                    <li>Gladney helped us...</li>
+                    <li>The trip home...</li>
+                </ul>
+
+                <div class="share-your-story__disclaimer">
+                    <strong>Rights &amp; Release:</strong>
+                    By submitting this material you grant the Gladney Center the right to use, publish and otherwise publicly display this material in the manner The Gladney Center chooses, including use in brochures and on the web.
+                </div>
+            </div>
+        </div>
+
+        <a class="share-your-story__cta" href="mailto:adoption@gladney.org">
+            <div class="l-container">
+                Please email your story and photos to us at <strong>adoption@gladney.org</strong>. We look forward to hearing from you!
+            </div>
+        </a>
+    </section>
+
+{% endblock %}

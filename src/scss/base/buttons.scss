@@ -1,0 +1,134 @@
+.button,
+#{$all-buttons} {
+	&:not(.flickity-prev-next-button) {
+		display: block;
+		appearance:none;
+		background-color:palette(branding,salmon);
+		border:0;
+		border-radius:0;
+		color:#fff;
+		cursor:pointer;
+		display:inline-block;
+		font-family:$base-font-family;
+		font-size:1em;
+		-webkit-font-smoothing:antialiased;
+		font-weight:600;
+		line-height: 3;
+		padding: 0 1em;
+		text-align:center;
+		text-decoration:none;
+		transition: all 200ms ease;
+		text-transform:uppercase;
+		user-select:none;
+		vertical-align:middle;
+		white-space:nowrap;
+		@include tracking(75);
+
+		&:hover,
+		&:focus {
+			background-color: palette(branding, green);
+			color:#fff;
+		}
+
+		&:disabled {
+			cursor:not-allowed;
+			opacity:0.5;
+
+			&:hover {
+				background-color:palette(branding,salmon);
+			}
+		}
+
+
+		/* Size variants */
+		&.button--xs {
+			padding: 0 0.5em;
+			line-height: 2.5;
+			font-size: rem(12px);
+			@include tracking(75);
+		}
+
+
+		&.button--xl {
+			font-size: 1.4rem;
+			line-height: 2;
+			padding-left: 2em;
+			padding-right: 2em;
+
+			.wf-nimbussanscondensed-n7-active & {
+				font-family: $font2;
+				font-size: 1.8888rem;
+			}
+		}
+
+
+		&.button--wide {
+			width: 90%;
+			max-width: 20em;
+		}
+
+
+		/* Color variants */
+		&.button--outline {
+			background: none;
+			color: palette(branding, salmon);
+			border: 2px solid;
+
+			&:focus,
+			&:hover {
+				color: palette(branding, green);
+			}
+		}
+
+
+		&.button--outline-white {
+			background: none;
+			color: #FFF;
+			border: 2px solid;
+
+			&:focus,
+			&:hover {
+				color: palette(branding, salmon);
+			}
+		}
+
+
+		&.button--outline-navy {
+			background: none;
+			color: palette(branding, navy);
+			border: 2px solid;
+
+			&:focus,
+			&:hover {
+				color: palette(branding, green);
+			}
+		}
+
+
+		&.button--neutral {
+			background-color: palette(branding, navy);
+
+			&:focus,
+			&:hover {
+				background-color: palette(branding, green)
+			}
+		}
+
+
+		&.button--positive {
+			background-color: palette(branding, green);
+
+			&:focus,
+			&:hover {
+				background-color: palette(branding, navy)
+			}
+		}
+
+
+		/* Other variants */
+		&.button--rnd {
+			border-radius: 3px;
+			border-top-left-radius: 0;
+		}
+	}
+}

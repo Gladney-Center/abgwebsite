@@ -1,0 +1,170 @@
+{% extends '_layouts/style-guide' %}
+
+{% block main %}
+
+{# .syle-guide__grid is a wrapper for the styleguide only #}
+<div class="style-guide__grid">
+
+
+    <div class="sg-full">
+        <div class="l-container">
+            <p>A full width section which needs a full bleed background. E.g. `.site-header`</p>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="l-container">
+        <p>A normal section which doens't need a full bleed background</p>
+    </div>
+
+
+
+
+
+    <div class="sg-three-cols">
+        <div class="l-container">
+            <div class="l-grid">
+                <div class="col">
+                    <p>A three column section. Note we now need to use an extra `.l-grid` container</p>
+                </div>
+                <div class="col">
+                    <p>Column</p>
+                </div>
+                <div class="col">
+                    <p>Column</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="sg-two-cols">
+        <div class="l-container">
+            <div class="l-grid">
+                <div class="col">
+                    <p>A two column section. The undrelying grid is 15 columns, so this is bit odd in that it breaks the grid, but the design calls for it.</p>
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt facilis repellat nam, aut ducimus molestias?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="sg-fifteen-cols">
+        <div class="l-container">
+            <h1>The underlaying 15 column grid</h1>
+            <div class="l-grid">
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="sg-fifteen-cols">
+        <div class="l-container l-container--9">
+            <h1>A narrow section made up of 9 standard columns, e.g. article body</h1>
+            <div class="l-grid">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="l-container l-container--9">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos natus modi maxime aperiam nihil autem dolor maiores fuga, deleniti provident doloribus laboriosam vitae quo suscipit temporibus officia harum velit tempora est nemo tempore. Dicta, cumque sint. Animi excepturi aspernatur minima corrupti tempora velit distinctio asperiores neque blanditiis aliquid beatae, magnam quidem quisquam, voluptas, doloribus provident error tempore a voluptatum accusantium vel voluptate eaque minus culpa. Ipsum nobis, sint, dolores voluptatum atque velit error unde accusantium ipsam debitis officia ab incidunt dignissimos inventore quisquam illum facilis quos officiis similique maiores labore nisi ex, eveniet. Vel officiis maiores cum quos, necessitatibus expedita.</p>
+    </div>
+
+
+    <div class="sg-seventeen-cols">
+        <div class="l-container l-container--17">
+            <h1>An extra wide section with two additional columns. E.g. Homepage 'about' section</h1>
+            <div class="l-grid">
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

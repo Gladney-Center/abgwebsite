@@ -1,0 +1,32 @@
+{
+  "name": "gw-starter",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Good Work <hello@simplygoodwork.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bourbon": "~4.3.3",
+    "normalize-css": "^5.0.0",
+    "sass-mq": "^3.3.2"
+  },
+  "devDependencies": {
+    "neat": "^2.1.0",
+    "flickity": "^2.0.10",
+    "magnific-popup": "^1.1.0",
+    "nouislider": "^10.1.0",
+    "wnumb": "^1.1.0",
+    "jquery.easie.js": "^1.0.2"
+  }
+}

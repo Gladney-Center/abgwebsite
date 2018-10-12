@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/youtube</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/youtube" transform="translate(-1.000000, -1.000000)" fill="#000000">
+            <path d="M9,1 C13.4296875,1 17,4.5703125 17,9 C17,13.4296875 13.4296875,17 9,17 C4.5703125,17 1,13.4296875 1,9 C1,4.5703125 4.5703125,1 9,1 Z M9,12.6640625 C14,12.6640625 14,12.6640625 14,9 C14,5.3359375 14,5.3359375 9,5.3359375 C4,5.3359375 4,5.3359375 4,9 C4,12.6640625 4,12.6640625 9,12.6640625 Z M7.6640625,11 L7.6640625,7 L11,9 L7.6640625,11 Z" id="youtube"></path>
+        </g>
+    </g>
+</svg>

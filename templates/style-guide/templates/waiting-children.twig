@@ -1,0 +1,252 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+<header class="banner" style="background-image: url('/static/img/temp/banner-4.jpg')">
+    <h1 class="banner__heading">Waiting Children</h1>
+</header>
+
+
+
+
+
+<section class="l-container l-container--17">
+    <div class="l-grid l-left-sidebar l-waiting-childen">
+        <div class="left">
+            <aside>
+                <section class="profile-search">
+                    <strong class="profile-search__title">
+                        <span class="big">Meet waiting children</span>
+                        <a  href="#" class="small js-profile-search-toggle">Show filters</a>
+                    </strong>
+
+                    <form action="">
+                        <ul class="form-fields form-fields--center">
+                            <li class="cols-2">
+                                <div>
+                                    <label for="gender">Gender</label>
+                                    <div class="select select--green--d">
+                                        <select name="" id="gender">
+                                            <option value="All" >All</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female" selected>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="siblings">Siblings</label>
+                                    <div class="select select--green--d">
+                                        <select name="" id="siblings">
+                                            <option value="All" selected >All</option>
+                                            <option value="Male">Yes</option>
+                                            <option value="Female">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <fieldset>
+                                    <legend>Country</legend>
+                                    <div class="cols-2">
+                                        <label class="control checkbox">
+                                            <input type="checkbox">
+                                            <span class="control-indicator"></span>
+                                            <strong>China</strong>
+                                        </label>
+                                        <label class="control checkbox">
+                                            <input type="checkbox">
+                                            <span class="control-indicator"></span>
+                                            <strong>Columbia</strong>
+                                        </label>
+                                        <label class="control checkbox">
+                                            <input type="checkbox" checked>
+                                            <span class="control-indicator"></span>
+                                            <strong>Taiwan</strong>
+                                        </label>
+                                        <label class="control checkbox">
+                                            <input type="checkbox">
+                                            <span class="control-indicator"></span>
+                                            <strong>U.S.</strong>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </li>
+
+                            <li>
+                                <label for="ethnicity">Ethnicity</label>
+                                <div class="select select--green--d u-full-width">
+                                    <select name="" id="ethnicity">
+                                        <option value="All" selected >All</option>
+                                        <option value="lorem">Lorem</option>
+                                        <option value="Ipsum">Ipsum</option>
+                                        <option value="Dolar">Dolar</option>
+                                    </select>
+                                </div>
+                            </li>
+
+                            <li>
+                                <label for="ageRange">Age Range</label>
+                                <div id="ageRange" class="age-range"></div>
+                            </li>
+
+                            <li>
+                                <input class="button button--rnd" type="submit" value="Submit">
+                            </li>
+                        </ul>
+                    </form>
+                </section>
+
+
+                <section class="profile-login">
+                    <strong class="profile-login__title">For access to more profiles, log in</strong>
+                    <form action="">
+                        <ul class="form-fields form-fields--center">
+                            <li>
+                                <label for="username">Username</label>
+                                <input type="text" required id="username">
+                            </li>
+                            <li>
+                                <label for="passwprd">Password</label>
+                                <input type="password" required id="passwprd">
+                            </li>
+                            <li>
+                                <input class="button button--rnd" type="submit" value="Submit">
+                            </li>
+                        </ul>
+                    </form>
+                    <p class="profile-login__extra">Don’t have a profile? <a href="">Get started »</a></p>
+
+                    <div class="profile-login__extra profile-login__small">
+                        <p>To access more profiles, <a href="">Log in</a> or <a href="">Register</a></p>
+                    </div>
+                </section>
+
+
+                <nav class="profile-navigation">
+                    <a href="" class="profile-navigation__prev">Previous child</a>
+                    <a href="" class="profile-navigation__next">Next child</a>
+                    <a href="" class="profile-navigation__all">View all children</a>
+                </nav>
+            </aside>
+        </div>
+
+
+        <div class="right">
+            <header class="profile-list-header">
+                <h2 class="heading-a">Profiles</h2>
+
+                <nav class="pagination">
+                    <ul>
+                        <li class="pagination__prev"><a href="">Prev</a></li>
+                        <ul>
+                            <li><a href="">1</a></li>
+                            <li><a class="is-active" href="">2</a></li>
+                            <li><a href="">3</a></li>
+                            <li><a href="">4</a></li>
+                            <li><a href="">5</a></li>
+                            <li><a href="">6</a></li>
+                            <li><a href="">7</a></li>
+                        </ul>
+                        <li class="pagination__next"><a href="">Next</a></li>
+                        <li class="pagination__last"><a href="">Last</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+
+            <ul class="filters">
+                <li><strong>Gender:</strong> <a href="">Female{{ svgSprite.icon('close-circle') }}</a></li>
+                <li><strong>Country:</strong> <a href="">Taiwan{{ svgSprite.icon('close-circle') }}</a></li>
+                <li class="filters__clear"><a href="">Clear all<span> filters</span>{{ svgSprite.icon('close-circle') }}</a></li>
+            </ul>
+
+
+            <ul class="profile-list">
+                {% for i in 0..3 %}
+                <li class="profile-snippet">
+                    <a href="" class="profile-snippet__photo">
+                        <img src="/static/img/temp/profile-snippet-1.jpg" alt="Nova">
+                    </a>
+
+                    <div class="profile-snippet__details">
+                        <h4>Nova</h4>
+
+                        <div class="profile-snippet__meta">
+                            <dl class="meta-list meta-list--inline">
+                                <dt>Gender:</dt>
+                                <dd><span class="u-sr-only">Female</span>{{ svgSprite.icon('person', '', 'person--f') }}</dd>
+
+                                <dt>Age:</dt>
+                                <dd>1</dd>
+                            </dl>
+
+                            <dl class="meta-list meta-list--inline">
+                                <dt>Country:</dt>
+                                <dd>Taiwan</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <a href="" class="profile-snippet__link">Learn more</a>
+                </li>
+
+                <li class="profile-snippet">
+                    <a href="" class="profile-snippet__photo">
+                        <img src="/static/img/temp/profile-snippet-1.jpg" alt="Mac">
+                    </a>
+
+                    <div class="profile-snippet__details">
+                        <h4>Mac</h4>
+
+                        <div class="profile-snippet__meta">
+                            <dl class="meta-list meta-list--inline">
+                                <dt>Gender:</dt>
+                                <dd><span class="u-sr-only">Female</span>{{ svgSprite.icon('person', '', 'person--f') }}</dd>
+
+                                <dt>Age:</dt>
+                                <dd>1</dd>
+                            </dl>
+
+                            <dl class="meta-list meta-list--inline">
+                                <dt>Country:</dt>
+                                <dd>Taiwan</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <a href="" class="profile-snippet__link">Learn more</a>
+                </li>
+
+                <li class="profile-snippet">
+                    <a href="" class="profile-snippet__photo">
+                        <img src="/static/img/temp/profile-snippet-1.jpg" alt="Lori">
+                    </a>
+
+                    <div class="profile-snippet__details">
+                        <h4>Lori</h4>
+
+                        <div class="profile-snippet__meta">
+                            <dl class="meta-list meta-list--inline">
+                                <dt>Gender:</dt>
+                                <dd><span class="u-sr-only">Female</span>{{ svgSprite.icon('person', '', 'person--f') }}</dd>
+
+                                <dt>Age:</dt>
+                                <dd>1</dd>
+                            </dl>
+
+                            <dl class="meta-list meta-list--inline">
+                                <dt>Country:</dt>
+                                <dd>Taiwan</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <a href="" class="profile-snippet__link">Learn more</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}

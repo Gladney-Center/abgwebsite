@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/nav-toggle-open</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/nav-toggle-open" transform="translate(-1.000000, -2.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="menu-34" transform="translate(1.000000, 2.000000)">
+                <path d="M15,6 L1,6 C0.4,6 0,6.4 0,7 C0,7.6 0.4,8 1,8 L15,8 C15.6,8 16,7.6 16,7 C16,6.4 15.6,6 15,6 Z" id="Shape"></path>
+                <path d="M15,0 L1,0 C0.4,0 0,0.4 0,1 C0,1.6 0.4,2 1,2 L15,2 C15.6,2 16,1.6 16,1 C16,0.4 15.6,0 15,0 Z" id="Shape"></path>
+                <path d="M15,12 L1,12 C0.4,12 0,12.4 0,13 C0,13.6 0.4,14 1,14 L15,14 C15.6,14 16,13.6 16,13 C16,12.4 15.6,12 15,12 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

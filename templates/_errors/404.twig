@@ -1,0 +1,19 @@
+{% extends '_layouts/site' %}
+{% set title = "Page not found" %}
+
+{% block main %}
+
+    <header class="banner banner--plain">
+        <h1 class="u-sr-only">{{ title }}</h1>
+        <h2 class="banner__heading banner__heading--s"><em>Hmmm...</em> Looks like something went wrong.</h2>
+    </header>
+
+    <div class="page">
+
+        <section class="l-container l-container--9 wysiwyg">
+            <p>The page you are looking for cannot be found. Perhaps it used to be here and was moved or deleted, or maybe you’ve simply typed in the wrong address. Whatever the case, let’s just start fresh on <a href="/">the homepage</a>.</p>
+        </section>
+
+    </div>
+
+{% endblock %}

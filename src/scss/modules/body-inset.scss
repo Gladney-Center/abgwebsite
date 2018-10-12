@@ -1,0 +1,85 @@
+.body-inset {
+  margin-bottom: 3em;
+
+  @include mq(760px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  &__content {
+    font-size: rem(14px);
+
+    @include mq(760px) {
+      padding: 0 4rem;
+    }
+  }
+
+
+  &__heading {
+    color: palette(branding, teal);
+    line-height: 1;
+    margin-bottom: 2rem;
+
+    @include mq(900px) {
+      margin-left: -3rem;
+      font-size: rem(45px);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0.95em;
+      height: 4px;
+      background-color: palette(branding, teal);
+      margin-top: 0.15em;
+    }
+
+
+    h3 {
+      font-size: rem(48px);
+      font-family: $font2;
+      text-transform: uppercase;
+      margin-bottom: 0;
+      line-height: 1;
+    }
+
+
+    h4 {
+      font-family: $font3;
+      font-style: italic;
+      font-size: rem(16px);
+      font-weight: 400;
+      color: palette(base, font);
+      margin-bottom: 0;
+      margin-top: 0.5rem;
+      @include tracking(10);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @include mq(m) {
+      flex-direction: row;
+    }
+
+    p {
+      text-transform: uppercase;
+      font-family: $font1;
+      font-weight: 600;
+      line-height: 1.4em;
+      padding-right: 1.5em;
+      margin-bottom: 0;
+    }
+
+    .button {
+      margin: 1em 0;
+    }
+
+  }
+
+}

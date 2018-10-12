@@ -1,0 +1,47 @@
+.html {
+    background-color:palette(base,body);
+    min-height:100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    @include mq($until: site-nav) {
+
+        &.site-nav-is-open {
+            height:100%;
+            overflow:hidden;
+            position:fixed;
+            width:100%;
+        }
+    }
+}
+
+.body {
+    background-color: palette(branding, pri);
+    padding-top: 15vh;
+
+    @media screen and ( min-width: 1180px ) {
+        padding-top: 90px;
+        transition: padding-top 350ms ease;
+    }
+    @media screen and ( min-height: 600px ) and ( min-width: 1180px ) {
+        padding-top: 18vh;
+    }
+
+    .modal-open & {
+        overflow: hidden;
+        height: 100%;
+        left: 0;
+        -webkit-overflow-scrolling: touch;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+}
+
+.main {
+    background-color: #FFF;
+
+    .body--about & {
+        overflow-x: hidden;
+    }
+}
