@@ -33,6 +33,7 @@ return array(
       "dateFormat"            => "M d, Y",
     ),
     "craftEnv"                  => CRAFT_ENVIRONMENT,
+    'backupDbOnUpdate' => false,
   ),
   "local" => array(
     "devMode"                   => true,

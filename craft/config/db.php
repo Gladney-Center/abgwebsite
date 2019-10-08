@@ -13,7 +13,7 @@ return array(
 		"tablePrefix" 	=> "craft",
 	),
 	"local" => array(
-		"server" 		=> "35.188.108.139",
+		"server" 		=> "35.184.47.38",
 		"user"			=> "waiting_child",
 		"database" 		=> "child",
 		"password" 		=> "98H4H#E3UsT7dV",
@@ -29,7 +29,7 @@ return array(
 		"database"		=> "gladney",
 	),
 	"production" => array(
-		"server"		=> "35.188.108.139",
+		"server"		=> "35.184.47.38",
 		"user" 			=> "waiting_child",
 		"password" 		=> "98H4H#E3UsT7dV",
 		"database" 		=> "child",
