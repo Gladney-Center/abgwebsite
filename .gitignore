@@ -1,4 +1,5 @@
 # Craft
+craft/config
 /craft/storage/backups
 /craft/storage/runtime
 
