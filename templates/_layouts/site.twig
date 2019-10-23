@@ -177,41 +177,6 @@
 
 		                </ul>
 		            </section>
-			    <script>
-			    	$(document).ready(function(e) {
-					var container = $('.site-footer__posts')
-
-					$.get('https://us-central1-adopted-web.cloudfunctions.net/hubspotSucks/abg', function(d) {
-
-						let list = $('<ul/>',{'class':'article-snippet-list'})
-
-						d.objects.map(function(obj,i) {
-							list.append(
-								$('<li/>').append(
-									$('<a/>',{
-										href: obj.link,
-										target: '_blank'
-									}).append(
-										$('<strong/>',{text: obj.pubDate})
-									).append(
-										$('<p/>',{text: obj.title})
-									)
-								)
-							)
-						})
-
-						container.empty().append(
-							$('<h5/>',{'class':'site-footer__title'}).append(
-								$('<a/>',{
-									href: d.link,
-									target: '_blank',
-									text: d.title
-								})
-							)
-						).append(list)
-					})
-				})
-			    </script>
 		        </div>
 		    </div>
 		</footer>
@@ -379,7 +344,45 @@
 		{% includeJs formJs %}
 
 
+		{% set blogReplaceJs %}
+		
+			$(document).ready(function(e) {
+				var container = $('.site-footer__posts')
 
+				$.get('https://us-central1-adopted-web.cloudfunctions.net/hubspotSucks/abg', function(d) {
+
+					let list = $('<ul/>',{'class':'article-snippet-list'})
+
+					d.objects.map(function(obj,i) {
+						list.append(
+							$('<li/>').append(
+								$('<a/>',{
+									href: obj.link,
+									target: '_blank'
+								}).append(
+									$('<strong/>',{text: obj.pubDate})
+								).append(
+									$('<p/>',{text: obj.title})
+								)
+							)
+						)
+					})
+
+					container.empty().append(
+						$('<h5/>',{'class':'site-footer__title'}).append(
+							$('<a/>',{
+								href: d.link,
+								target: '_blank',
+								text: d.title
+							})
+						)
+					).append(list)
+				})
+			})
+		
+		{% endset %}
+		
+		{% includeJs blogReplaceJs %}
 
 		<section class="impressum">
 		    <div class="l-container l-container--17">
